@@ -1,0 +1,45 @@
+{
+  "name": "generator-cells",
+  "version": "0.1.0",
+  "description": "Scaffold out a Cells project",
+  "keywords": [
+    "yeoman-generator",
+    "scaffold",
+    "framework",
+    "mvc",
+    "polymer",
+    "cells"
+  ],
+  "author": "Cells Team",
+  "main": "app/index.js",
+  "repository": "yeoman/generator-polymer",
+  "scripts": {
+    "test": "jshint {app,el,gh,seed}/*.js && mocha --reporter spec"
+  },
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "lodash": "^3.3.0",
+    "ncp": "^2.0.0",
+    "rimraf": "^2.2.8",
+    "validate-element-name": "^1.0.0",
+    "yeoman-generator": "^0.18.8",
+    "yosay": "^1.0.0"
+  },
+  "devDependencies": {
+    "jshint": "*",
+    "mocha": "*"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "licenses": "BSD",
+  "files": [
+    "app",
+    "el",
+    "element",
+    "gh",
+    "seed",
+    "script-base.js",
+    "util.js"
+  ]
+}
