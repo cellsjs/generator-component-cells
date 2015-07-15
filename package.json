@@ -1,6 +1,6 @@
 {
   "name": "generator-cells",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Scaffold out a Cells project",
   "keywords": [
     "yeoman-generator",
