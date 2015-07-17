@@ -1,5 +1,16 @@
 @import "../cells-sass/main";
-
 :host {
-  @apply(--<%= elementName %>);
+  //Styling
+  min-height: 100%;
+  color: var(--text-primary);
+  background-color: var(--background-primary);
+  @apply(--layout-vertical);
+  @apply(--layout-center);
+  @apply(--layout-center-center);
+}
+img{
+  max-width: 25vw;
+}
+:host {
+  @apply(--seed-element);
 }

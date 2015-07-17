@@ -11,30 +11,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <title><%= elementName %> Demo</title>
+    <meta content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes" name="viewport">
+    <title>seed-element Demo</title>
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-
-    <!-- Add theme -->
-    <link rel="import" href="../../bbva-ui-theme/bbva-ui-theme.html">
-
-    <link rel="import" href="../<%= elementName %>.html">
+<!-- Add theme-->
+    <link href="../../bbva-ui-theme/bbva-ui-theme.html" rel="import">
+<!-- End theme-->
+    <link href="../seed-element.html" rel="import">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
   </head>
   <body>
-
-    <p>An example of <code>&lt;<%= elementName %>&gt;</code> component:</p>
-
-    <button>Say Something</button>
-
-    <<%= elementName %> author='{"name": "Lord Meowser", "image": "http://placekitten.com/g/200/300"}' fancy>
-      <h2>Hello <%= elementName %></h2>
-    </<%= elementName %>>
-
-    <script>
-      document.querySelector('button').addEventListener('click', function() {
-        alert(document.querySelector('<%= elementName %>').sayHello('Hallo!'));
-      });
-    </script>
-
+    <seed-element welcome='{"title": "Welcome to Cells", "image": "../images/cells.svg"}'></seed-element>
+    <script></script>
   </body>
 </html>
