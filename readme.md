@@ -1,6 +1,10 @@
 ## Yeoman generator for Cells projects
 
 ## ChangeLog
+v 0.3.3
+* index.html modified to show jsdoc info.
+
+
 v 0.3.2
 * Change polymer import html tag to index.html at demo folder instead of at component itself.
 
