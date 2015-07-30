@@ -1,6 +1,14 @@
 ## Yeoman generator for Cells projects
 
+```
+npm install -g generator-cells
+```
+
 ## ChangeLog
+v 0.3.4
+* Polymer license comments removed.
+
+
 v 0.3.3
 * index.html modified to show jsdoc info.
 
