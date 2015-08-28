@@ -5,6 +5,11 @@ npm install -g generator-cells
 ```
 
 ## ChangeLog
+v 0.4.0
+* Removed default theme import.
+* Removed default theme dependency at bower.json.
+
+
 v 0.3.4
 * Polymer license comments removed.
 

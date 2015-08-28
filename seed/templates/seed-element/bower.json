@@ -4,7 +4,6 @@
  "dependencies": {
    "polymer": "Polymer/polymer#v1.0.0",
    "iron-flex-layout": "polymerelements/iron-flex-layout#^1.0.0",
-   "bbva-ui-theme": "https://descinet.bbva.es/stash/scm/celcom/bbva-ui-theme.git",
    "cells-sass":"https://descinet.bbva.es/stash/scm/cel/cells-sass.git"
  }
 }
