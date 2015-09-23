@@ -5,6 +5,22 @@ npm install -g generator-cells
 ```
 
 ## ChangeLog
+v 0.5.3
+* Fixes in theme implementation.
+
+v 0.5.2
+* Theme dependency moved to devDependencies.
+
+v 0.5.1
+* Prompt questions to implement theme improved.
+
+v 0.5.0
+* WebComponentTester improved.
+* Prompt questions to implement i18n and theme automatically.
+* .gitignore now ignores /components and /node_modules and /bower_components.
+* Polymer dependency changed to ~1.0.0.
+* Demo route added to inline doc at component html file.
+
 v 0.4.0
 * Removed default theme import.
 * Removed default theme dependency at bower.json.
