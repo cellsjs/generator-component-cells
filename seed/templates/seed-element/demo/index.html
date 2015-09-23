@@ -7,11 +7,13 @@
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../polymer/polymer.html">
-<!-- Add theme-->
+<% if (!useTheme) { %><!-- Add theme-->
     <!-- Example: -->
     <!-- (Remember to add the dependency into bower.json file) -->
-    <link href="../../{app}-ui-theme/{app}-ui-theme.html" rel="import">
-<!-- End theme-->
+    <!-- <link href='../../bbva-ui-theme/bbva-ui-theme.html' rel="import">--><% } %>
+<% if (useTheme) { %>
+    <link href='../../<%= themeName %>/<%= themeName %>.html' rel="import">
+<% } %> <% if (!useTheme) { %><!-- End theme--><% } %>
     <link href="../seed-element.html" rel="import">
     <style>
       * {
@@ -26,6 +28,15 @@
   </head>
   <body>
     <seed-element welcome='{"title": "Welcome to Cells", "image": "../images/cells.svg"}'></seed-element>
-    <script></script>
+    <script>
+      <% if (i18n) { %>
+        document.documentElement.lang = 'en';
+        document.addEventListener('HTMLImportsLoaded', function() {
+          // fallback language is english
+          I18nMsg.lang = document.documentElement.lang;
+          I18nMsg.url = '../locales';
+        });
+      <% } %>
+    </script>
   </body>
 </html>

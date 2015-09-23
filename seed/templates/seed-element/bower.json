@@ -3,10 +3,12 @@
  "version": "0.1.0",
  "dependencies": {
    "polymer": "Polymer/polymer#~1.0.0",
-   "iron-flex-layout": "polymerelements/iron-flex-layout#^1.0.0"
+   "iron-flex-layout": "polymerelements/iron-flex-layout#^1.0.0",
+   "cells-i18n-msg":"https://descinet.bbva.es/stash/scm/cel/cells-i18n-msg.git"
  },
  "devDependencies":{
-   "cells-sass":"https://descinet.bbva.es/stash/scm/cel/cells-sass.git"
+   "cells-sass":"https://descinet.bbva.es/stash/scm/cel/cells-sass.git",
+   "web-component-tester": "^3.0.0"
  },
  "main": "seed-element.html"
 }

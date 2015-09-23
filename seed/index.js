@@ -45,27 +45,42 @@ module.exports = yeoman.generators.Base.extend({
     var done = this.async();
 
     // Have Yeoman greet the user.
-    this.log(yosay('Out of the box I include Polymer\'s seed-element.'));
+    this.log(yosay('Out of the box I include Cells\'s seed-element.'));
 
     var prompts = [{
-        name: 'ghUser',
-        message: 'What is your GitHub username?'
+        name: 'i18n',
+        message: 'Is your component going to use i18n?',
+        type: 'confirm'
       }, {
         name: 'includeWCT',
         message: 'Would you like to include web-component-tester?',
         type: 'confirm'
+      }, {
+        name: 'useTheme',
+        message: 'Would you use a theme?',
+        type: 'confirm'
+      }, {
+        when: function (resp) {
+          return resp.useTheme;
+        },
+        name: 'themeName',
+        message: 'What\'s your component\'s theme?',
+        type: 'list',
+        choices: ['bbva-ui-theme', 'buzz-ui-theme', 'cells-composer-ui-theme', 'Other...']
+      }, {
+        when: function (resp) {
+          return resp.themeName === 'Other...';
+        },
+        name: 'themeName',
+        message: 'What\'s the theme name?'
       }
     ];
 
     this.prompt(prompts, function (props) {
-      this.ghUser = props.ghUser;
+      this.i18n = props.i18n;
       this.includeWCT = props.includeWCT;
-
-      // Save user's GitHub name for when they want to use gh subgenerator
-      this.config.set({
-        ghUser: this.ghUser
-      });
-      this.config.save();
+      this.useTheme = props.useTheme;
+      this.themeName = props.themeName;
 
       done();
     }.bind(this));
@@ -87,12 +102,24 @@ module.exports = yeoman.generators.Base.extend({
 
     this.copy('bower.json', 'bower.json', function(file) {
       var manifest = JSON.parse(file);
+      var theme_repo_url = 'https://descinet.bbva.es/stash/scm/celcom/' + this.themeName + '.git';
+
       manifest.name = this.elementName;
       manifest.main = this.elementName + '.html';
       if (!this.includeWCT) {
         delete manifest.devDependencies['web-component-tester'];
-        delete manifest.devDependencies['test-fixture'];
       }
+
+      if (!this.i18n) {
+        delete manifest.dependencies['cells-i18n-msg'];
+      }
+
+      // Add theme dependency
+      if (this.useTheme) {
+        manifest.devDependencies[this.themeName] = theme_repo_url;
+      }
+
+
       return JSON.stringify(manifest, null, 2);
     }.bind(this));
 
@@ -106,13 +133,19 @@ module.exports = yeoman.generators.Base.extend({
     if (this.includeWCT) {
       this.copy('test/index.html', 'test/index.html', renameElement);
       this.copy('test/basic-test.html', 'test/basic-test.html', renameElement);
+      this.copy('test/check-value-test.html', 'test/check-value-test.html', renameElement);
+      this.copy('test/functions-test.html', 'test/functions-test.html', renameElement);
+    }
+
+    if (this.i18n) {
+      this.copy('locales/en.json', 'locales/en.json', renameElement);
     }
   },
   install: function () {
     this.installDependencies({
       npm: false,
       skipInstall: this.options['skip-install'],
-      skipMessage: this.options['skip-install-message'],
+      skipMessage: this.options['skip-install-message']
     });
   }
 });
