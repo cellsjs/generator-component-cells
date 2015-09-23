@@ -1,0 +1,155 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <!-- Step 1: import the element to test -->
+    <link rel="import" href="../seed-element.html">
+  </head>
+  <body>
+
+    <!-- You can use the document as a place to set up your fixtures. -->
+    <seed-element id="myEl"></seed-element>
+
+    <script>
+    var myEl;
+    /*
+    * @type {suiteSetup}
+    *
+    * @webcomponent {myEl}
+    * @property {property1, property2, property3}
+    */
+    suiteSetup(function(){
+        myEl = document.querySelector('#myEl');
+        /*
+        ---  EXAMPLES  ---
+
+        myEl.set('property1',"value of setting");
+        */
+    });
+
+    /*
+    * @type {check set}
+    *
+    * Description suite.
+    *
+    * @component {myEl}
+    * @property {property1, property2, property3}
+    */
+    suite('2.- Check of value of properties is correct according to set.', function() {
+
+      /*
+      * @type {check set initial}
+      *
+      * Description suite.
+      *
+      * @component {myEl}
+      * @property {property1, property2, property3}
+      */
+      suite('2.1.- Check value initial set within observers', function() {
+        /*
+          ---  EXAMPLES  ---
+        test('should property1 value in myEl',function(){
+          expect(myEl.property1).to.be.equal(true);
+        });
+
+        test('should property2 value in myEl',function(){
+          expect(myEl2.property2).to.be.equal("some text of value example");
+        });
+        */
+      });
+
+      /*
+      * @type {observer}
+      *
+      * Description observer.
+      *
+      * @component {myEl}
+      * @property {property2}
+      * @value {someValue}
+      */
+      suite('2.2.- Check changes of observers', function() {
+
+        /*
+        * @type {observer}
+        *
+        * Description..
+        *
+        * @component {myEl}
+        * @property {property2}
+        * @value {some value example}
+        */
+
+        /*
+         ---  EXAMPLES  ---
+        suite('2.2.1.- Observer: "nameObserver" = "value of example"', function() {
+
+          test('All options should have expected icons', function(done) {
+              flush(function() {
+                var findItem = myEl.querySelectorAll('buzz-ui-molecule-list-button-item');
+                setTimeout(function () {
+                  try {
+                    expect(findItem).to.have.length(3);
+                    expect(findItem[0].icon).to.equal('C09');
+                    expect(findItem[1].icon).to.equal('C02');
+                    expect(findItem[2].icon).to.equal('D06');
+                    done();
+                  }
+                  catch (e) {
+                    done(e);
+                  }
+                }, 0);
+              });
+          });
+        });
+        */
+
+      /*
+      * @type {value conditional}
+      *
+      * Description.
+      *
+      * @component {myEl}
+      * @property {property1}
+      */
+      suite('2.3.- Change webcomponent when change values', function() {
+
+        /*
+        * @type {value conditional}
+        *
+        * Description.
+        *
+        * @component {myEl}
+        * @property {property1}
+        */
+
+        /*
+        ---   EXAMPLE ---
+        suite('2.3.1.- Visible and hidden the adviser', function() {
+          test('Visible the adviser', function(done) {
+            flush(function() {
+              setTimeout(function () {
+                var findItem = myEl.querySelectorAll("#icoAdviser");
+                try {
+                  expect(findItem).to.not.be.null;
+                  done();
+                }
+                catch (e) {
+                  done(e);
+                }
+              }, 0);
+            });
+          });
+        });
+        */
+      });
+    });
+
+    </script>
+  </body>
+</html>

@@ -18,48 +18,49 @@
 
     <script>
     var myEl;
-
     /*
     * @type {suiteSetup}
     *
     * @webcomponent {myEl}
+    * @property {property1, property2, property3}
     */
     suiteSetup(function(){
         myEl = document.querySelector('#myEl');
+        /*
+        ---  EXAMPLES  ---
+
+        myEl.set('property1',"value of setting");
+        */
     });
 
     /*
-    * @type {inital configuration}
+    * @type {functions}
     *
-    * Check the atributes declared.
+    * Check functions.
     *
     * @component {myEl}
-    * @property {property1, property2, property3, property4}
+    * @method {name-function}
     */
-    suite('1.- Initial Configuration', function() {
-      suite('1.1- Check the properties that are defined', function() {
-        /*
-        ---  EXAMPLES  ---
-
-        test('should be in the webcompoents exist', function() {
-            expect(myEl).to.not.be.undefined;
-        });
-        test('should be in the webcompoents exist', function() {
-            expect(myEl.property1).to.not.be.undefined;
-        });
+    suite('4.- Check functions', function() {
+      /*
+      * @type {functions}
+      *
+      * Description function.
+      *
+      * @component {myEl}
+      * @method {name-function}
       */
-      });
-
-      suite('1.2- Check the the type of properties is correct', function() {
-        /*
-        ---  EXAMPLES  ---
-
-        test('should visible have type Boolean',function(){
-          expect(myEl.property1).that.is.an('Boolean');
+      /*
+      suite('4.1.- Check function hideFoggy', function() {
+        test('property1 not run', function() {
+          expect(myEl.property1).to.be.equal(true);
+          myEl.name-function();
+          expect(myEl.property1).to.be.equal(true);
         });
-      */
       });
+      */
     });
+
     </script>
   </body>
 </html>
