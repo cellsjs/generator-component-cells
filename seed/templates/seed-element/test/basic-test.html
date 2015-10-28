@@ -17,47 +17,25 @@
     <seed-element id="myEl"></seed-element>
 
     <script>
-    var myEl;
+    suite('<seed-element> tag', function() {
+      var myEl;
 
-    /*
-    * @type {suiteSetup}
-    *
-    * @webcomponent {myEl}
-    */
-    suiteSetup(function(){
-        myEl = document.querySelector('#myEl');
-    });
-
-    /*
-    * @type {inital configuration}
-    *
-    * Check the atributes declared.
-    *
-    * @component {myEl}
-    * @property {property1, property2, property3, property4}
-    */
-    suite('1.- Initial Configuration', function() {
-      suite('1.1- Check the properties that are defined', function() {
-        /*
-        ---  EXAMPLES  ---
-
-        test('should be in the webcompoents exist', function() {
-            expect(myEl).to.not.be.undefined;
-        });
-        test('should be in the webcompoents exist', function() {
-            expect(myEl.property1).to.not.be.undefined;
-        });
-      */
+      suiteSetup(function() {
+          myEl = document.querySelector('#myEl');
       });
 
-      suite('1.2- Check the the type of properties is correct', function() {
-        /*
-        ---  EXAMPLES  ---
+      suiteTeardown(function() {
+          myEl.remove();
+      });
 
-        test('should visible have type Boolean',function(){
-          expect(myEl.property1).that.is.an('Boolean');
+      suite('in general', function() {
+        test('should be in document', function() {
+          expect(myEl).not.to.be.undefined;
         });
-      */
+
+        test('should have welcome property', function() {
+          expect(myEl.properties).to.have.property('welcome').that.is.an('Object');
+        });
       });
     });
     </script>
