@@ -5,6 +5,13 @@ npm install -g generator-cells
 ```
 
 ## ChangeLog
+v 0.6.0
+* js as external file.
+* Update devDependencies.
+* Leave tests to the minimun.
+* I18n config script as external file and imported in HEAD.
+* Language selector added in demo.
+
 v 0.5.3
 * Fixes in theme implementation.
 
