@@ -1,6 +1,5 @@
 {
  "name": "seed-element",
- "version": "0.1.0",
  "dependencies": {
    "polymer": "Polymer/polymer#~1.0.0",
    "iron-flex-layout": "polymerelements/iron-flex-layout#^1.0.0",
@@ -8,6 +7,7 @@
  },
  "devDependencies":{
    "cells-sass":"https://descinet.bbva.es/stash/scm/cel/cells-sass.git",
+   "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
    "web-component-tester": "^3.0.0"
  },
  "main": "seed-element.html"
