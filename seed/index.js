@@ -125,20 +125,21 @@ module.exports = yeoman.generators.Base.extend({
 
     this.copy('index.html', 'index.html', renameElement);
     this.copy('README.md', 'README.md', renameElement);
+    this.copy('seed-element.js', this.elementName + '.js', renameElement);
     this.copy('seed-element.html', this.elementName + '.html', renameElement);
     this.copy('seed-element.scss', this.elementName + '.scss', renameElement);
+    this.copy('demo/js/demo.js', 'demo/js/demo.js', renameElement);
     this.copy('demo/index.html', 'demo/index.html', renameElement);
     this.copy('images/cells.svg', 'images/cells.svg', renameElement);
 
     if (this.includeWCT) {
       this.copy('test/index.html', 'test/index.html', renameElement);
       this.copy('test/basic-test.html', 'test/basic-test.html', renameElement);
-      this.copy('test/check-value-test.html', 'test/check-value-test.html', renameElement);
-      this.copy('test/functions-test.html', 'test/functions-test.html', renameElement);
     }
 
     if (this.i18n) {
       this.copy('locales/en.json', 'locales/en.json', renameElement);
+      this.copy('demo/js/I18nMsg.js', 'demo/js/I18nMsg.js', renameElement);
     }
   },
   install: function () {
