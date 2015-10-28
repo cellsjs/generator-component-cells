@@ -25,18 +25,35 @@
         height: 100%;
       }
     </style>
+<% if (i18n) { %>
+    <style>
+      #selector {
+        padding: 5px 5px;
+        margin: 0 0 24px 0;
+        background: #ffffff;
+        border: 0;
+        display: block;
+        min-width: 50px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px -2px rgba(0, 0, 0, 0.2);
+        float: right;
+      }
+    </style>
+    <script type="text/javascript">
+      document.documentElement.lang = 'en';
+    </script>
+    <script src="js/I18nMsg.js"></script>
+<% } %>
   </head>
   <body>
+<% if (i18n) { %>
+    <!-- language selector: i18n purpose -->
+    <select id="selector">
+      <option selected>en</option>
+      <!-- include as many languages you have: /locales/*.json -->
+    </select>
+    <!-- .end of language selector -->
+<% } %>
     <seed-element welcome='{"title": "Welcome to Cells", "image": "../images/cells.svg"}'></seed-element>
-    <script>
-      <% if (i18n) { %>
-        document.documentElement.lang = 'en';
-        document.addEventListener('HTMLImportsLoaded', function() {
-          // fallback language is english
-          I18nMsg.lang = document.documentElement.lang;
-          I18nMsg.url = '../locales';
-        });
-      <% } %>
-    </script>
+    <script src="js/demo.js"></script>
   </body>
 </html>
