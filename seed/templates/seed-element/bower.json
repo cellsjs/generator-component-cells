@@ -2,7 +2,6 @@
  "name": "seed-element",
  "dependencies": {
    "polymer": "Polymer/polymer#~1.0.0",
-   "iron-flex-layout": "polymerelements/iron-flex-layout#^1.0.0",
    "cells-i18n-msg":"https://descinet.bbva.es/stash/scm/cel/cells-i18n-msg.git"
  },
  "devDependencies":{
