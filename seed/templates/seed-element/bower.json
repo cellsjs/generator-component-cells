@@ -1,5 +1,9 @@
 {
  "name": "seed-element",
+ "description": "Your component description",
+ "keywords": [
+
+ ],
  "dependencies": {
    "polymer": "Polymer/polymer#~1.0.0",
    "cells-i18n-msg":"https://descinet.bbva.es/stash/scm/cel/cells-i18n-msg.git"
