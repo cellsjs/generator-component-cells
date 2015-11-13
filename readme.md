@@ -5,6 +5,9 @@ npm install -g generator-cells
 ```
 
 ## ChangeLog
+v 0.7.1
+* js as external file... again.
+
 v 0.7.0
 * js inside html again.
 * Removed iron-flex-layout dependency.
