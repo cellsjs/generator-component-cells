@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="seed-element-styles.html">
 <% if (i18n) { %>
 <link rel="import" href="../cells-i18n-msg/cells-i18n-msg.html">
 <% } %>
@@ -23,8 +24,8 @@ The following custom properties and mixins are available for styling:
 @demo demo/index.html
 -->
 <dom-module id="seed-element">
-  <link rel="import" type="css" href="seed-element.css">
   <template>
+    <style include="seed-element-styles"></style>
     <h1 class="ocultar">{{welcome.title}}</h1>
      <img src="{{welcome.image}}" alt="">
     <content></content>
