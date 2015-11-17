@@ -5,6 +5,9 @@ npm install -g generator-cells
 ```
 
 ## ChangeLog
+v 0.8.0
+* Polymer version dependency updated to 1.2.0
+
 v 0.7.1
 * js as external file... again.
 
