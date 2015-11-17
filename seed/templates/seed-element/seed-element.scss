@@ -4,9 +4,11 @@
   min-height: 100%;
   color: var(--text-primary);
   background-color: var(--background-primary);
-  @apply(--layout-vertical);
-  @apply(--layout-center);
-  @apply(--layout-center-center);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 img{
   max-width: 25vw;
