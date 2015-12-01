@@ -111,6 +111,7 @@ module.exports = yeoman.generators.Base.extend({
       }
 
       if (!this.i18n) {
+        delete manifest.keywords['i18n'];
         delete manifest.dependencies['cells-i18n-msg'];
       }
 
