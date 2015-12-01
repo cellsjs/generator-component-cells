@@ -3,7 +3,7 @@
  "description": "Your component description",
  "keywords": ["i18n"],
  "dependencies": {
-   "polymer": "Polymer/polymer#~1.2.0",
+   "polymer": "Polymer/polymer#^1.2.0",
    "cells-i18n-msg":"https://descinet.bbva.es/stash/scm/cel/cells-i18n-msg.git"
  },
  "devDependencies":{
