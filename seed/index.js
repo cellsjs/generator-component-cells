@@ -105,7 +105,7 @@ module.exports = yeoman.generators.Base.extend({
       var theme_repo_url = 'https://descinet.bbva.es/stash/scm/celcom/' + this.themeName + '.git';
 
       manifest.name = this.elementName;
-      manifest.main = this.elementName + '.html';
+      manifest.main = [this.elementName + '.html'];
       if (!this.includeWCT) {
         delete manifest.devDependencies['web-component-tester'];
       }
