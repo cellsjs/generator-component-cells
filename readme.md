@@ -5,6 +5,11 @@ npm install -g generator-cells
 ```
 
 ## ChangeLog
+v0.8.1
+* Bower package main files to be handled in an Array
+* When internationalization is affirmative, add i18n keyword to bower package
+* Remove universal resets in demo/index.html
+
 v 0.8.0
 * Polymer version dependency updated to 1.2.0
 
@@ -20,7 +25,7 @@ v 0.7.0
 v 0.6.0
 * js as external file.
 * Update devDependencies.
-* Leave tests to the minimun.
+* Leave tests to the minimum.
 * I18n config script as external file and imported in HEAD.
 * Language selector added in demo.
 
