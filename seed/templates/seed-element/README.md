@@ -7,9 +7,16 @@ Example:
 <seed-element></seed-element>
 ```
 
-## Dependencies
+## Data model
+[comment]: <> (use either one of the data model docs examples)
 
-Your component dependencies list.
+Canonical DM: 'entityName', example available [List of entities](http://bbva-files.s3.amazonaws.com/cells/bbva-catalog/index.html?guide=wu2_dataModelEntitiesAndDefinition)
+
+Component own DM example:
+
+```json
+{}
+```
 
 ## Styling
 
