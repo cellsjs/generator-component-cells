@@ -1,5 +1,6 @@
 {
  "name": "seed-element",
+ "version": "0.1.0",
  "description": "Your component description",
  "keywords": ["i18n"],
  "dependencies": {
