@@ -66,7 +66,22 @@ module.exports = yeoman.generators.Base.extend({
         name: 'themeName',
         message: 'What\'s your component\'s theme?',
         type: 'list',
-        choices: ['bbva-ui-theme', 'buzz-ui-theme', 'cells-composer-ui-theme', 'Other...']
+        choices:[{
+          name: 'bbva-ui-theme',
+          value: { theme: 'bbva-ui-theme', version: '#^0.1.0' },
+          checked: false
+        }, {
+          name: 'buzz-ui-theme',
+          value: { theme: 'buzz-ui-theme', version: '#^0.1.1' },
+          checked: false
+        }, {
+          name: 'cells-composer-ui-theme',
+          value: { theme: 'cells-composer-ui-theme', version: '#^0.4.1' },
+          checked: false
+        }, {
+          name: 'Other...',
+          checked: false
+        }]
       }, {
         when: function (resp) {
           return resp.themeName === 'Other...';
@@ -80,7 +95,8 @@ module.exports = yeoman.generators.Base.extend({
       this.i18n = props.i18n;
       this.includeWCT = props.includeWCT;
       this.useTheme = props.useTheme;
-      this.themeName = props.themeName;
+      this.themeName = props.themeName.theme || props.themeName;
+      this.themeVersion = props.themeName.version || '';
 
       done();
     }.bind(this));
@@ -102,7 +118,7 @@ module.exports = yeoman.generators.Base.extend({
 
     this.copy('bower.json', 'bower.json', function(file) {
       var manifest = JSON.parse(file);
-      var theme_repo_url = 'https://descinet.bbva.es/stash/scm/celcom/' + this.themeName + '.git';
+      var theme_repo_url = 'https://descinet.bbva.es/stash/scm/celcom/' + this.themeName + '.git' + this.themeVersion;
 
       manifest.name = this.elementName;
       manifest.main = [this.elementName + '.html'];
