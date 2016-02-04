@@ -5,6 +5,14 @@ npm install -g generator-cells
 ```
 
 ## ChangeLog
+v0.8.3
+* Add version to bower dependencies cells-sass and \*-themes
+
+v0.8.2
+* Add to bower package initial version
+* .gitignore now ignores /coverage and cells.log (generated files from cellsjs npm package).
+* Update cells-symbol
+
 v0.8.1
 * Bower package main files to be handled in an Array
 * When internationalization is affirmative, add i18n keyword to bower package
