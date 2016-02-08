@@ -5,6 +5,9 @@ npm install -g generator-cells
 ```
 
 ## ChangeLog
+v0.8.4
+* Add an option to list of themes
+
 v0.8.3
 * Add version to bower dependencies cells-sass and \*-themes
 
