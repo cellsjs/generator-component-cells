@@ -78,6 +78,11 @@ module.exports = yeoman.generators.Base.extend({
           name: 'cells-composer-ui-theme',
           value: { theme: 'cells-composer-ui-theme', version: '#^0.4.1' },
           checked: false
+        },
+        {
+          name: 'glomo-ui-theme',
+          value: { theme: 'glomo-ui-theme', version: '#^0.1.0' },
+          checked: false
         }, {
           name: 'Other...',
           checked: false
