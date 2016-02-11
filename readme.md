@@ -5,6 +5,9 @@ npm install -g generator-cells
 ```
 
 ## ChangeLog
+v0.8.5
+* Bug fixed: Error when no theme is selected
+
 v0.8.4
 * Add an option to list of themes
 
