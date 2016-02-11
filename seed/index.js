@@ -100,8 +100,10 @@ module.exports = yeoman.generators.Base.extend({
       this.i18n = props.i18n;
       this.includeWCT = props.includeWCT;
       this.useTheme = props.useTheme;
-      this.themeName = props.themeName.theme || props.themeName;
-      this.themeVersion = props.themeName.version || '';
+      if (this.useTheme) {
+        this.themeName = props.themeName.theme || props.themeName;
+        this.themeVersion = props.themeName.version || '';
+      }
 
       done();
     }.bind(this));
