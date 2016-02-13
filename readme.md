@@ -5,6 +5,9 @@ npm install -g generator-cells
 ```
 
 ## ChangeLog
+v0.9.0
+* Change of used dependency for i18n
+
 v0.8.5
 * Bug fixed: Error when no theme is selected
 
