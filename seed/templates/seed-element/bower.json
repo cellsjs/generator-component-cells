@@ -5,7 +5,7 @@
  "keywords": ["i18n"],
  "dependencies": {
    "polymer": "Polymer/polymer#^1.2.0",
-   "cells-i18n-msg":"https://descinet.bbva.es/stash/scm/cel/cells-i18n-msg.git"
+   "cells-i18n-behavior":"https://descinet.bbva.es/stash/scm/cel/cells-i18n-behavior.git#~0.1.0"
  },
  "devDependencies":{
    "cells-sass":"https://descinet.bbva.es/stash/scm/cel/cells-sass.git#^1.0.0",
