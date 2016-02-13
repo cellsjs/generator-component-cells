@@ -13,7 +13,7 @@ Polymer({
      *
      * @type {{title: string, image: string}}
      */
-     welcome: {
+     project: {
        type: Object,
        // Use `value` to provides a default value for a property, by setting it
        // on your element's prototype.
@@ -26,7 +26,7 @@ Polymer({
        // prototype).
        value: function() {
          return {
-           title: 'Welcome to Cells',
+           title: 'Cells',
            image: '../images/cells.svg'
          };
        }
