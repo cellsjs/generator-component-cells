@@ -15,15 +15,6 @@ Polymer({
      */
      project: {
        type: Object,
-       // Use `value` to provides a default value for a property, by setting it
-       // on your element's prototype.
-       //
-       // If you provide a function, as we do here, Polymer will call that
-       // _per element instance_.
-       //
-       // We do that to ensure that each element gets its own copy of the
-       // value, rather than having it shared across all instances (via the
-       // prototype).
        value: function() {
          return {
            title: 'Cells',
