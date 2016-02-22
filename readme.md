@@ -5,6 +5,11 @@ npm install -g generator-cells
 ```
 
 ## ChangeLog
+v0.9.1
+* Optimize demo for iOS browsers (added ontouchstart and set user-select to none)
+* At demo, set component properties after 'WebComponentsReady' event
+* Change viewport metadata
+
 v0.9.0
 * Change of used dependency for i18n
 
