@@ -12,9 +12,9 @@
     <!-- (Remember to add the dependency into bower.json file) -->
     <!-- <link href='../../bbva-ui-theme/bbva-ui-theme.html' rel="import">--><% } %>
 <% if (useTheme) { %>
-    <link href='../../<%= themeName %>/<%= themeName %>.html' rel="import">
+    <link rel="import" href='../../<%= themeName %>/<%= themeName %>.html'>
 <% } %> <% if (!useTheme) { %><!-- End theme--><% } %>
-    <link href="../seed-element.html" rel="import">
+    <link rel="import" href="../seed-element.html">
     <link rel="import" href="../../cells-ui-demo-mobile/cells-ui-demo-mobile.html">
     <style>
       html, body {
