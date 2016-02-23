@@ -15,6 +15,7 @@
     <link href='../../<%= themeName %>/<%= themeName %>.html' rel="import">
 <% } %> <% if (!useTheme) { %><!-- End theme--><% } %>
     <link href="../seed-element.html" rel="import">
+    <link rel="import" href="../../cells-ui-demo-mobile/cells-ui-demo-mobile.html">
     <style>
       html, body {
         height: 100%;
@@ -58,7 +59,10 @@
     </select>
     <!-- .end of language selector -->
 <% } %>
-    <seed-element project='{"title": "Cells", "image": "../images/cells.svg"}'></seed-element>
+    <cells-ui-demo-mobile>
+      <seed-element project='{"title": "Cells", "image": "../images/cells.svg"}'></seed-element>
+    </cells-ui-demo-mobile>
+
     <script src="js/demo.js"></script>
   </body>
 </html>
