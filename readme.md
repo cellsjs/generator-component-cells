@@ -5,6 +5,9 @@ npm install -g generator-cells
 ```
 
 ## ChangeLog
+v0.10.0
+* Add to demo a device shell
+
 v0.9.1
 * Optimize demo for iOS browsers (added ontouchstart and set user-select to none)
 * At demo, set component properties after 'WebComponentsReady' event
