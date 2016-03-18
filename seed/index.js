@@ -63,19 +63,18 @@ module.exports = yeoman.generators.Base.extend({
         message: 'What\'s your component\'s theme?',
         type: 'list',
         choices:[{
-          name: 'bbva-ui-theme',
-          value: { theme: 'bbva-ui-theme', version: '#^0.1.0' },
-          checked: false
-        }, {
-          name: 'buzz-ui-theme',
-          value: { theme: 'buzz-ui-theme', version: '#^0.1.1' },
+          name: 'theme-base',
+          value: { theme: 'theme-base', version: '#^1.0.2' },
           checked: false
         }, {
           name: 'cells-composer-ui-theme',
           value: { theme: 'cells-composer-ui-theme', version: '#^0.4.1' },
           checked: false
-        },
-        {
+        }, {
+          name: 'cc-ui-theme',
+          value: { theme: 'cc-ui-theme', version: '#~0.1.14' },
+          checked: false
+        }, {
           name: 'glomo-ui-theme',
           value: { theme: 'glomo-ui-theme', version: '#^0.1.0' },
           checked: false
