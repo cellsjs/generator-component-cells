@@ -12,7 +12,7 @@
   ],
   "author": "Cells Team",
   "main": "app/index.js",
-  "repository": "yeoman/generator-polymer",
+  "repository": "cellsjs/generator-polymer",
   "scripts": {
     "test": "jshint {app,el,gh,seed}/*.js && mocha --reporter spec"
   },
