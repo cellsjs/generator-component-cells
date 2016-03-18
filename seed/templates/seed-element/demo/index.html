@@ -7,41 +7,12 @@
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../polymer/polymer.html">
-<% if (!useTheme) { %><!-- Add theme-->
-    <!-- Example: -->
-    <!-- (Remember to add the dependency into bower.json file) -->
-    <!-- <link href='../../bbva-ui-theme/bbva-ui-theme.html' rel="import">--><% } %>
 <% if (useTheme) { %>
     <link rel="import" href='../../<%= themeName %>/<%= themeName %>.html'>
 <% } %> <% if (!useTheme) { %><!-- End theme--><% } %>
     <link rel="import" href="../seed-element.html">
     <link rel="import" href="../../cells-ui-demo-mobile/cells-ui-demo-mobile.html">
-    <style>
-      html, body {
-        height: 100%;
-      }
-      body {
-        margin: 0;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-      *, *:before, *:after {
-        -webkit-tap-highlight-color: transparent; }
-<% if (i18n) { %>
-      #selector {
-        padding: 5px 5px;
-        margin: 0 0 24px 0;
-        background: #ffffff;
-        border: 0;
-        display: block;
-        min-width: 50px;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px -2px rgba(0, 0, 0, 0.2);
-        float: right;
-      }<% } %>
-    </style>
+    <link rel="import" href="css/demo-styles.html">
 <% if (i18n) { %>
     <script type="text/javascript">
       document.documentElement.lang = 'en';
@@ -52,7 +23,8 @@
   <body ontouchstart>
 <% if (i18n) { %>
     <!-- language selector: i18n purpose -->
-    <select id="selector">
+    <label for="selector">Lang</label>
+    <select class="selector">
       <option selected>en</option>
       <option>es</option>
       <!-- include as many languages you have: /locales/*.json -->
