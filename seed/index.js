@@ -121,7 +121,7 @@ module.exports = yeoman.generators.Base.extend({
 
     this.copy('bower.json', 'bower.json', function(file) {
       var manifest = JSON.parse(file);
-      var theme_repo_url = 'https://descinet.bbva.es/stash/scm/celcom/' + this.themeName + '.git' + this.themeVersion;
+      var theme_repo_url = 'https://descinet.bbva.es/stash/scm/ct/' + this.themeName + '.git' + this.themeVersion;
 
       manifest.name = this.elementName;
       manifest.main = [this.elementName + '.html'];
