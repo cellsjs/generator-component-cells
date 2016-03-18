@@ -1,7 +1,15 @@
 ## Yeoman generator for Cells projects
 
+Install:
+
+```sh
+$ npm install -g generator-cells
 ```
-npm install -g generator-cells
+
+Run:
+
+```sh
+$ yo cells:seed your-component-name
 ```
 
 ## ChangeLog
