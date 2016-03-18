@@ -52,10 +52,6 @@ module.exports = yeoman.generators.Base.extend({
         message: 'Is your component going to use i18n?',
         type: 'confirm'
       }, {
-        name: 'includeWCT',
-        message: 'Would you like to include web-component-tester?',
-        type: 'confirm'
-      }, {
         name: 'useTheme',
         message: 'Would you use a theme?',
         type: 'confirm'
@@ -98,7 +94,7 @@ module.exports = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (props) {
       this.i18n = props.i18n;
-      this.includeWCT = props.includeWCT;
+      this.includeWCT = true;
       this.useTheme = props.useTheme;
       if (this.useTheme) {
         this.themeName = props.themeName.theme || props.themeName;
