@@ -1,18 +1,21 @@
 @import "../cells-sass/main";
-:host {
-  //Styling
-  min-height: 100%;
-  color: var(--text-primary, #0065b7);
-  background-color: var(--background-primary);
 
+:host {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  font-family: var(--cells-fontDefault);
+  text-align: center;
+  min-height: 100%;
+  color: var(--seed-element-color, --cells-text-primary);
+  background-color: var(--seed-element-background-color, --cells-background-primary);
 }
-img{
+
+img {
+  display: block;
+  margin: auto;
   max-width: 30vw;
 }
+
 :host {
   @apply(--seed-element);
 }
