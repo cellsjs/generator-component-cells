@@ -1,7 +1,7 @@
 {
   "name": "generator-cells",
   "version": "0.10.0",
-  "description": "Scaffold out a Cells project",
+  "description": "Scaffold out a Cells Component",
   "keywords": [
     "yeoman-generator",
     "scaffold",
