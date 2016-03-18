@@ -24,5 +24,5 @@ The following custom properties and mixins are available for styling:
 
 | Custom property | Description     | Default        |
 |:---------------:|:---------------:| :-------------:|
-| --your-var      | var description | default value  |
+| --seed-element-scope      | scope description | default value  |
 | --seed-element  | empty mixin     | {}             |
