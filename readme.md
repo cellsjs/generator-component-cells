@@ -13,6 +13,19 @@ $ yo cells:seed your-component-name
 ```
 
 ## ChangeLog
+v1.0.0
+* Fix: remove dependency of theme if none is required
+* Url of themes updated to Cells Themes project
+* Use theme-base as replacement of a couple of theme options
+* Always include WebComponentTester, therefore tests
+* Initial version of component, 1.0.0
+* Include 'use strict' in Polymer definition
+* Use fallback value of css custom properties to assign theme-base vars, and leave a component-named-and-scoped variable as primary value
+* Use external style file for demo
+* Fix: initial tests
+* Set properties via mocks in demo.js
+* Use Polymer dom selectors
+
 v0.10.0
 * Add to demo a device shell
 
