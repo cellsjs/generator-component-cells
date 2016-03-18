@@ -21,7 +21,7 @@
       var myEl;
 
       suiteSetup(function() {
-          myEl = document.querySelector('#myEl');
+          myEl = Polymer.dom(this.root).querySelector('#myEl');
       });
 
       suiteTeardown(function() {

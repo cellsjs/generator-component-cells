@@ -1,10 +1,10 @@
 document.addEventListener('WebComponentsReady', function() {
   // set component properties here
-  var el = document.querySelector('seed-element');
+  var el = Polymer.dom(this.root).querySelector('seed-element');
 });
 
 <% if (i18n) { %>
-var selectLang = document.querySelector('select');
+var selectLang = Polymer.dom(this.root).querySelector('select');
 
 // Demo i18n
 selectLang.addEventListener('change', function(){
