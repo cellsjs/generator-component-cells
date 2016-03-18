@@ -136,6 +136,8 @@ module.exports = yeoman.generators.Base.extend({
       // Add theme dependency
       if (this.useTheme) {
         manifest.devDependencies[this.themeName] = theme_repo_url;
+      } else {
+        delete manifest.devDependencies['theme-base'];
       }
 
 
