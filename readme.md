@@ -14,6 +14,7 @@ $ yo cells:seed your-component-name
 
 ## ChangeLog
 v1.0.0
+* Gives additional option whether to use theme-base on top of selected theme, when is not theme-base
 * Fix: remove dependency of theme if none is required
 * Url of themes updated to Cells Themes project
 * Use theme-base as replacement of a couple of theme options
