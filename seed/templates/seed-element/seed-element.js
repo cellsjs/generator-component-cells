@@ -15,7 +15,7 @@
       * Describes the title of the element, but is really just an excuse to
       * show off JSDoc annotations.
       *
-      * @type {{title: string, image: string}}
+      * @type {Object} project's title and image url
       */
       project: {
         type: Object,
@@ -28,5 +28,5 @@
       }
     }
   });
-  
+
 })();

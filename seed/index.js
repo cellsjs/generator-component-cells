@@ -88,6 +88,13 @@ module.exports = yeoman.generators.Base.extend({
         },
         name: 'themeName',
         message: 'What\'s the theme name?'
+      }, {
+        when: function(resp) {
+          return resp.useTheme && resp.themeName.theme !== 'theme-base';
+        },
+        name: 'themeBase',
+        message: 'Want to use on top of theme-base?',
+        type: 'confirm'
       }
     ];
 
@@ -98,6 +105,7 @@ module.exports = yeoman.generators.Base.extend({
       if (this.useTheme) {
         this.themeName = props.themeName.theme || props.themeName;
         this.themeVersion = props.themeName.version || '';
+        this.themeBase = props.themeBase;
       }
 
       done();
@@ -136,10 +144,10 @@ module.exports = yeoman.generators.Base.extend({
       // Add theme dependency
       if (this.useTheme) {
         manifest.devDependencies[this.themeName] = theme_repo_url;
-      } else {
-        delete manifest.devDependencies['theme-base'];
+        if(!this.themeBase && this.themeName !== 'theme-base') {
+          delete manifest.devDependencies['theme-base'];
+        }
       }
-
 
       return JSON.stringify(manifest, null, 2);
     }.bind(this));

@@ -7,9 +7,10 @@
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../polymer/polymer.html">
-<% if (useTheme) { %>
+<% if (useTheme) { %><% if (themeBase) { %>
+    <link rel="import" href='../../theme-base/theme-base.html'><% } %>
     <link rel="import" href='../../<%= themeName %>/<%= themeName %>.html'>
-<% } %> <% if (!useTheme) { %><!-- End theme--><% } %>
+<% } %>
     <link rel="import" href="../seed-element.html">
     <link rel="import" href="../../cells-ui-demo-mobile/cells-ui-demo-mobile.html">
     <link rel="import" href="css/demo-styles.html">
