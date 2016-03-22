@@ -13,6 +13,9 @@ $ yo cells:seed your-component-name
 ```
 
 ## ChangeLog
+v1.1.0
+* Rename dependency and update url of it.
+
 v1.0.0
 * Gives additional option whether to use theme-base on top of selected theme, when is not theme-base
 * Fix: remove dependency of theme if none is required
