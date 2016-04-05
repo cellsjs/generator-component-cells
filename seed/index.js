@@ -8,6 +8,7 @@ var chalk = require('chalk');
 
 module.exports = yeoman.generators.Base.extend({
   constructor: function () {
+    var themeNameObj;
     yeoman.generators.Base.apply(this, arguments);
 
     this.argument('element-name', {
@@ -24,28 +25,48 @@ module.exports = yeoman.generators.Base.extend({
       desc: 'Whether commands run should be shown',
       defaults: false,
     });
-
-    this.sourceRoot(path.join(path.dirname(this.resolved), 'templates/seed-element'));
-  },
-  validate: function () {
-    this.elementName = this['element-name'];
-    var result = elementNameValidator(this.elementName);
-
-    if (!result.isValid) {
-      this.emit('error', new Error(chalk.red(result.message)));
-    }
-
-    if (result.message) {
-      console.warn(chalk.yellow(result.message + '\n'));
-    }
-
-    return true;
-  },
-  askFor: function () {
-    var done = this.async();
+    this.option('i18n', {
+      desc: 'Whether your component uses i18n',
+      type: Boolean
+    });
+    this.option('useTheme', {
+      desc: 'Whether your component going to use a theme',
+      type: Boolean
+    });
+    this.option('themeName', {
+      desc: 'Whether your component will use a theme'
+    });
+    this.option('themeBase', {
+      desc: 'Whether the theme is going to be on top of theme-base',
+      type: Boolean
+    });
 
     // Have Yeoman greet the user.
     this.log(yosay('Out of the box I include Cells\'s seed-element.'));
+
+    if (this.options.themeName) {
+      try {
+        themeNameObj = JSON.parse(this.options.themeName.replace(/\'/g, '"'));
+      } catch (e) {
+        themeNameObj = this.options.themeName;
+      }
+    }
+
+    this.i18n = (this.options.i18n == "true");
+    this.includeWCT = true;
+    this.useTheme = (this.options.useTheme == "true");
+
+    if (this.useTheme) {
+      this.themeName = themeNameObj.theme || themeNameObj;
+      this.themeVersion = themeNameObj.version || '';
+      this.themeBase = (this.options.themeBase == "true");
+    }
+
+    this.sourceRoot(path.join(path.dirname(this.resolved), 'templates/seed-element'));
+  },
+  askfor: function() {
+    var done = this.async();
+    var _this = this;
 
     var prompts = [{
         name: 'i18n',
@@ -98,20 +119,42 @@ module.exports = yeoman.generators.Base.extend({
       }
     ];
 
+    // Remove already known questions
+    prompts.forEach(function(prompt, idx) {
+      if(_this.options[prompt.name]) {
+          prompts.splice(idx, 1);
+      }
+    });
+
     this.prompt(prompts, function (props) {
-      this.i18n = props.i18n;
+      this.i18n = this.i18n || props.i18n;
       this.includeWCT = true;
-      this.useTheme = props.useTheme;
+      this.useTheme = this.useTheme || props.useTheme;
       if (this.useTheme) {
-        this.themeName = props.themeName.theme || props.themeName;
-        this.themeVersion = props.themeName.version || '';
-        this.themeBase = props.themeBase;
+        this.themeName = this.themeName || props.themeName.theme || props.themeName;
+        this.themeVersion = this.themeVersion || props.themeName.version || '';
+        this.themeBase = this.themeBase || props.themeBase;
       }
 
       done();
     }.bind(this));
 
   },
+  validate: function () {
+    this.elementName = this['element-name'];
+    var result = elementNameValidator(this.elementName);
+
+    if (!result.isValid) {
+      this.emit('error', new Error(chalk.red(result.message)));
+    }
+
+    if (result.message) {
+      console.warn(chalk.yellow(result.message + '\n'));
+    }
+
+    return true;
+  },
+
   seed: function () {
 
     var renameElement = function (file) {
