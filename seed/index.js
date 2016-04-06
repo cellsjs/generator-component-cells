@@ -8,7 +8,6 @@ var chalk = require('chalk');
 
 module.exports = yeoman.generators.Base.extend({
   constructor: function () {
-    var themeNameObj;
     yeoman.generators.Base.apply(this, arguments);
 
     this.argument('element-name', {
@@ -29,10 +28,6 @@ module.exports = yeoman.generators.Base.extend({
       desc: 'Whether your component uses i18n',
       type: Boolean
     });
-    this.option('useTheme', {
-      desc: 'Whether your component going to use a theme',
-      type: Boolean
-    });
     this.option('themeName', {
       desc: 'Whether your component will use a theme'
     });
@@ -46,19 +41,19 @@ module.exports = yeoman.generators.Base.extend({
 
     if (this.options.themeName) {
       try {
-        themeNameObj = JSON.parse(this.options.themeName.replace(/\'/g, '"'));
+        this.themeObj = JSON.parse(this.options.themeName.replace(/\'/g, '"'));
       } catch (e) {
-        themeNameObj = this.options.themeName;
+        this.themeObj = this.options.themeName;
       }
     }
 
     this.i18n = (this.options.i18n == "true");
     this.includeWCT = true;
-    this.useTheme = (this.options.useTheme == "true");
+    this.useTheme = (typeof this.options.themeName !== "undefined") ? true : undefined;
 
     if (this.useTheme) {
-      this.themeName = themeNameObj.theme || themeNameObj;
-      this.themeVersion = themeNameObj.version || '';
+      this.themeName = this.themeObj.theme || this.themeObj;
+      this.themeVersion = this.themeObj.version || '';
       this.themeBase = (this.options.themeBase == "true");
     }
 
@@ -80,7 +75,7 @@ module.exports = yeoman.generators.Base.extend({
         message: 'Would you use a theme?',
         type: 'confirm',
         when: function (resp) {
-          return (typeof this.options.useTheme === "undefined");
+          return !this.useTheme;
         }.bind(this)
       }, {
         name: 'themeName',
@@ -107,7 +102,7 @@ module.exports = yeoman.generators.Base.extend({
           checked: false
         }],
         when: function (resp) {
-          return (typeof this.options.useTheme === "undefined") && resp.useTheme;
+          return (typeof this.useTheme === "undefined") && resp.useTheme;
         }.bind(this)
       }, {
         name: 'themeName',
@@ -121,7 +116,10 @@ module.exports = yeoman.generators.Base.extend({
         type: 'confirm',
         when: function(resp) {
           var useTheme = this.options.useTheme || resp.useTheme;
-          var themeName = this.options.themeName ? this.options.themeName.theme : resp.themeName.theme;
+          var themeName;
+          if (useTheme) {
+            themeName = this.options.themeName ? this.options.themeName.theme : resp.themeName.theme;
+          }
           return (typeof this.options.themeBase === "undefined") && (useTheme && themeName !== 'theme-base');
         }.bind(this)
       }
@@ -132,8 +130,14 @@ module.exports = yeoman.generators.Base.extend({
       this.includeWCT = true;
       this.useTheme = this.useTheme || props.useTheme;
       if (this.useTheme) {
+        this.themeObj = this.themeObj || props.themeName;
         this.themeName = this.themeName || props.themeName.theme || props.themeName;
-        this.themeVersion = this.themeVersion || props.themeName.version || '';
+        this.themeVersion = '';
+
+        if (typeof this.themeObj === 'object') {
+            this.themeVersion = this.themeVersion || this.themeObj.version || '';
+        }
+        console.log('VERSION', this.themeVersion);
         this.themeBase = this.themeBase || props.themeBase;
       }
 
