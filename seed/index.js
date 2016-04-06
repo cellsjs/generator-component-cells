@@ -71,15 +71,18 @@ module.exports = yeoman.generators.Base.extend({
     var prompts = [{
         name: 'i18n',
         message: 'Is your component going to use i18n?',
-        type: 'confirm'
+        type: 'confirm',
+        when: function (resp) {
+          return (typeof this.options.i18n === "undefined");
+        }.bind(this)
       }, {
         name: 'useTheme',
         message: 'Would you use a theme?',
-        type: 'confirm'
-      }, {
+        type: 'confirm',
         when: function (resp) {
-          return resp.useTheme;
-        },
+          return (typeof this.options.useTheme === "undefined");
+        }.bind(this)
+      }, {
         name: 'themeName',
         message: 'What\'s your component\'s theme?',
         type: 'list',
@@ -102,29 +105,27 @@ module.exports = yeoman.generators.Base.extend({
         }, {
           name: 'Other...',
           checked: false
-        }]
-      }, {
+        }],
         when: function (resp) {
-          return resp.themeName === 'Other...';
-        },
-        name: 'themeName',
-        message: 'What\'s the theme name?'
+          return (typeof this.options.useTheme === "undefined") && resp.useTheme;
+        }.bind(this)
       }, {
-        when: function(resp) {
-          return resp.useTheme && resp.themeName.theme !== 'theme-base';
-        },
+        name: 'themeName',
+        message: 'What\'s the theme name?',
+        when: function (resp) {
+          return this.options.themeName === 'Other...' || resp.themeName === 'Other...';
+        }.bind(this)
+      }, {
         name: 'themeBase',
         message: 'Want to use on top of theme-base?',
-        type: 'confirm'
+        type: 'confirm',
+        when: function(resp) {
+          var useTheme = this.options.useTheme || resp.useTheme;
+          var themeName = this.options.themeName ? this.options.themeName.theme : resp.themeName.theme;
+          return (typeof this.options.themeBase === "undefined") && (useTheme && themeName !== 'theme-base');
+        }.bind(this)
       }
     ];
-
-    // Remove already known questions
-    prompts.forEach(function(prompt, idx) {
-      if(_this.options[prompt.name]) {
-          prompts.splice(idx, 1);
-      }
-    });
 
     this.prompt(prompts, function (props) {
       this.i18n = this.i18n || props.i18n;
