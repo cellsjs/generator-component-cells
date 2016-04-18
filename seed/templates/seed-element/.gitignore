@@ -6,4 +6,6 @@ node_modules
 # cellsjs validator
 
 cells.log
-coverage
+coverage*
+
+test-reports
