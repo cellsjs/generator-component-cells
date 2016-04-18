@@ -16,7 +16,11 @@ $ yo cells:seed your-component-name
 v1.1.1
 * Fix - Add i18n keyword to json only if i18n is selected
 * Fix - cells-sass import route changed to bower_components
+* Fix - variable name changed at scss (--cells-neutral-color instead of --cells-text-primary)
 * Added an empty ignore property to bower.json
+* Added ```coverage*``` and ```test-reports``` to .gitignore
+* New dependency version for cells-i18n-behavior(#1.0.2) and theme-base(#^2.0.0)
+
 
 v1.1.0
 * Rename dependency and update url of it.
