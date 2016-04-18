@@ -136,8 +136,9 @@ module.exports = yeoman.generators.Base.extend({
         delete manifest.devDependencies['web-component-tester'];
       }
 
-      if (!this.i18n) {
-        delete manifest.keywords['i18n'];
+      if (this.i18n) {
+        manifest.keywords.push('i18n');
+      } else {
         delete manifest.dependencies['cells-i18n-behavior'];
       }
 
