@@ -6,13 +6,13 @@
  "ignore": [],
  "dependencies": {
    "polymer": "Polymer/polymer#^1.2.0",
-   "cells-i18n-behavior":"https://descinet.bbva.es/stash/scm/cel/cells-i18n-behavior.git#1.0.0"
+   "cells-i18n-behavior":"https://descinet.bbva.es/stash/scm/cel/cells-i18n-behavior.git#1.0.2"
  },
  "devDependencies": {
    "cells-sass":"https://descinet.bbva.es/stash/scm/cel/cells-sass.git#^1.0.3",
    "cells-demo-mobile": "https://descinet.bbva.es/stash/scm/cel/cells-demo-mobile.git#^1.0.0",
    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-   "theme-base": "https://descinet.bbva.es/stash/scm/ct/theme-base.git#^1.0.0",
+   "theme-base": "https://descinet.bbva.es/stash/scm/ct/theme-base.git#^2.0.0",
    "web-component-tester": "^3.0.0"
  },
  "main": [
