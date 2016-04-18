@@ -2,9 +2,8 @@
  "name": "seed-element",
  "version": "1.0.0",
  "description": "Your component description",
- "keywords": [
-   "i18n"
- ],
+ "keywords": [],
+ "ignore": [],
  "dependencies": {
    "polymer": "Polymer/polymer#^1.2.0",
    "cells-i18n-behavior":"https://descinet.bbva.es/stash/scm/cel/cells-i18n-behavior.git#1.0.0"
