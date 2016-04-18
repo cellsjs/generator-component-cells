@@ -13,6 +13,11 @@ $ yo cells:seed your-component-name
 ```
 
 ## ChangeLog
+v1.1.1
+* Fix - Add i18n keyword to json only if i18n is selected
+* Fix - cells-sass import route changed to bower_components
+* Added an empty ignore property to bower.json
+
 v1.1.0
 * Rename dependency and update url of it.
 
