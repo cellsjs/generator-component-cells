@@ -21,11 +21,11 @@
       var myEl;
 
       suiteSetup(function() {
-          myEl = Polymer.dom(this.root).querySelector('#myEl');
+        myEl = Polymer.dom(this.root).querySelector('#myEl');
       });
 
       suiteTeardown(function() {
-          myEl.remove();
+        myEl.remove();
       });
 
       suite('in general', function() {
