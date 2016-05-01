@@ -37,11 +37,10 @@ The following custom properties and mixins are available for styling:
   <template>
     <style include="seed-element-styles"></style>
     <% if (i18n) { %>
-    <h1>{{t('seed-element-welcome', lang)}}{{project.title}}</h1>
+    <h1>{{t('seed-element-welcome', lang)}}{{heading}}</h1>
     <% } else { %>
-    <h1>Welcome to {{project.title}}</h1>
+    <h1>Welcome to {{heading}}</h1>
     <% } %>
-     <img src="{{project.image}}" alt="">
     <content></content>
   </template>
   <script src="seed-element.js"></script>
