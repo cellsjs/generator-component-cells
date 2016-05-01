@@ -21,12 +21,14 @@
   <body ontouchstart unresolved>
 <% if (i18n) { %>
     <!-- language selector: i18n purpose -->
-    <label class="lang" for="selector">Lang</label>
-    <select class="selector" id="selector">
-      <option selected>en</option>
-      <option>es</option>
-      <!-- include as many languages you have: /locales/*.json -->
-    </select>
+    <div class="lang-selector">
+      <label class="lang" for="selector">Lang</label>
+      <select class="selector" id="selector">
+        <option selected>en</option>
+        <option>es</option>
+        <!-- include as many languages you have: /locales/*.json -->
+      </select>
+    </div>
     <!-- .end of language selector -->
 <% } %>
     <cells-demo-mobile>
