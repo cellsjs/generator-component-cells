@@ -157,6 +157,8 @@ module.exports = yeoman.generators.Base.extend({
         if(!this.themeBase && this.themeName !== 'theme-base') {
           delete manifest.devDependencies['theme-base'];
         }
+      } else {
+        delete manifest.devDependencies['theme-base'];
       }
 
       return JSON.stringify(manifest, null, 2);
