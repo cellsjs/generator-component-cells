@@ -161,7 +161,7 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('demo/js/demo.js', 'demo/js/demo.js', renameElement);
     this.copy('demo/css/demo-styles.html', 'demo/css/demo-styles.html', renameElement);
     this.copy('demo/index.html', 'demo/index.html', renameElement);
-    this.copy('images/cells.svg', 'images/cells.svg', renameElement);
+    this.copy('demo/images/cells.svg', 'demo/images/cells.svg', renameElement);
 
     if (this.includeWCT) {
       this.copy('test/index.html', 'test/index.html', renameElement);
