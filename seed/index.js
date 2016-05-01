@@ -52,6 +52,10 @@ module.exports = yeoman.generators.Base.extend({
         message: 'Is your component going to use i18n?',
         type: 'confirm'
       }, {
+        name: 'demoMobile',
+        message: 'Would you like to use cells-demo-mobile in demo?',
+        type: 'confirm'
+      }, {
         name: 'useTheme',
         message: 'Would you use a theme?',
         type: 'confirm'
@@ -100,6 +104,7 @@ module.exports = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (props) {
       this.i18n = props.i18n;
+      this.demoMobile = props.demoMobile;
       this.includeWCT = true;
       this.useTheme = props.useTheme;
       if (this.useTheme) {
@@ -140,6 +145,10 @@ module.exports = yeoman.generators.Base.extend({
         manifest.keywords.push('i18n');
       } else {
         delete manifest.dependencies['cells-i18n-behavior'];
+      }
+
+      if (!this.demoMobile) {
+        delete manifest.devDependencies['cells-demo-mobile'];
       }
 
       // Add theme dependency

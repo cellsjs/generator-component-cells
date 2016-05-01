@@ -11,8 +11,8 @@
     <link rel="import" href='../../theme-base/theme-base.html'><% } %>
     <link rel="import" href='../../<%= themeName %>/<%= themeName %>.html'>
 <% } %>
-    <link rel="import" href="../seed-element.html">
-    <link rel="import" href="../../cells-demo-mobile/cells-demo-mobile.html">
+    <link rel="import" href="../seed-element.html"><% if (demoMobile) { %>
+    <link rel="import" href="../../cells-demo-mobile/cells-demo-mobile.html"><% } %>
     <link rel="import" href="css/demo-styles.html">
 <% if (i18n) { %>
     <script src="js/I18nMsg.js"></script>
@@ -32,11 +32,17 @@
       </div>
       <!-- .end of language selector -->
 <% } %>
+<% if (demoMobile) { %>
       <cells-demo-mobile>
         <seed-element heading="[[heading]]">
           <img src="images/cells.svg" alt="">
         </seed-element>
       </cells-demo-mobile>
+<% } else { %>
+      <seed-element heading="[[heading]]">
+        <img src="images/cells.svg" alt="">
+      </seed-element>
+<% } %>
     </template>
 
     <script src="js/demo.js"></script>
