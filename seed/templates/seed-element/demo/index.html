@@ -19,21 +19,23 @@
 <% } %>
   </head>
   <body ontouchstart unresolved>
+    <template is="dom-bind" id="demo">
 <% if (i18n) { %>
-    <!-- language selector: i18n purpose -->
-    <div class="lang-selector">
-      <label class="lang" for="selector">Lang</label>
-      <select class="selector" id="selector">
-        <option selected>en</option>
-        <option>es</option>
-        <!-- include as many languages you have: /locales/*.json -->
-      </select>
-    </div>
-    <!-- .end of language selector -->
+      <!-- language selector: i18n purpose -->
+      <div class="lang-selector">
+        <label class="lang" for="selector">Lang</label>
+        <select class="selector" id="selector" on-change="setDocumentLang">
+          <option selected>en</option>
+          <option>es</option>
+          <!-- include as many languages you have: /locales/*.json -->
+        </select>
+      </div>
+      <!-- .end of language selector -->
 <% } %>
-    <cells-demo-mobile>
-      <seed-element></seed-element>
-    </cells-demo-mobile>
+      <cells-demo-mobile>
+        <seed-element></seed-element>
+      </cells-demo-mobile>
+    </template>
 
     <script src="js/demo.js"></script>
   </body>
