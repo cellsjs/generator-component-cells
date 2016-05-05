@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -11,30 +11,38 @@
     <link rel="import" href='../../theme-base/theme-base.html'><% } %>
     <link rel="import" href='../../<%= themeName %>/<%= themeName %>.html'>
 <% } %>
-    <link rel="import" href="../seed-element.html">
-    <link rel="import" href="../../cells-demo-mobile/cells-demo-mobile.html">
+    <link rel="import" href="../seed-element.html"><% if (demoMobile) { %>
+    <link rel="import" href="../../cells-demo-mobile/cells-demo-mobile.html"><% } %>
     <link rel="import" href="css/demo-styles.html">
 <% if (i18n) { %>
-    <script type="text/javascript">
-      document.documentElement.lang = 'en';
-    </script>
     <script src="js/I18nMsg.js"></script>
 <% } %>
   </head>
-  <body ontouchstart>
+  <body ontouchstart unresolved>
+    <template is="dom-bind" id="demo">
 <% if (i18n) { %>
-    <!-- language selector: i18n purpose -->
-    <label class="lang" for="selector">Lang</label>
-    <select class="selector">
-      <option selected>en</option>
-      <option>es</option>
-      <!-- include as many languages you have: /locales/*.json -->
-    </select>
-    <!-- .end of language selector -->
+      <!-- language selector: i18n purpose -->
+      <div class="lang-selector">
+        <label class="lang" for="selector">Lang</label>
+        <select class="selector" id="selector" on-change="setDocumentLang">
+          <option selected>en</option>
+          <option>es</option>
+          <!-- include as many languages you have: /locales/*.json -->
+        </select>
+      </div>
+      <!-- .end of language selector -->
+<% } %><% if (demoMobile) { %>
+      <cells-demo-mobile>
+        <seed-element heading="[[heading]]" class="centered">
+          <img src="images/cells.svg" alt="">
+        </seed-element>
+      </cells-demo-mobile>
+<% } else { %>
+      <seed-element heading="[[heading]]" class="centered">
+        <img src="images/cells.svg" alt="">
+      </seed-element>
 <% } %>
-    <cells-demo-mobile>
-      <seed-element></seed-element>
-    </cells-demo-mobile>
+    </template>
 
     <script src="js/demo.js"></script>
   </body>

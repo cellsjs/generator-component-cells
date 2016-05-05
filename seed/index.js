@@ -52,6 +52,10 @@ module.exports = yeoman.generators.Base.extend({
         message: 'Is your component going to use i18n?',
         type: 'confirm'
       }, {
+        name: 'demoMobile',
+        message: 'Would you like to use cells-demo-mobile in demo?',
+        type: 'confirm'
+      }, {
         name: 'useTheme',
         message: 'Would you use a theme?',
         type: 'confirm'
@@ -76,7 +80,7 @@ module.exports = yeoman.generators.Base.extend({
           checked: false
         }, {
           name: 'glomo-ui-theme',
-          value: { theme: 'glomo-ui-theme', version: '#^0.1.0' },
+          value: { theme: 'glomo-ui-theme', version: '#^2.0.0' },
           checked: false
         }, {
           name: 'Other...',
@@ -100,6 +104,7 @@ module.exports = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (props) {
       this.i18n = props.i18n;
+      this.demoMobile = props.demoMobile;
       this.includeWCT = true;
       this.useTheme = props.useTheme;
       if (this.useTheme) {
@@ -142,12 +147,18 @@ module.exports = yeoman.generators.Base.extend({
         delete manifest.dependencies['cells-i18n-behavior'];
       }
 
+      if (!this.demoMobile) {
+        delete manifest.devDependencies['cells-demo-mobile'];
+      }
+
       // Add theme dependency
       if (this.useTheme) {
         manifest.devDependencies[this.themeName] = theme_repo_url;
         if(!this.themeBase && this.themeName !== 'theme-base') {
           delete manifest.devDependencies['theme-base'];
         }
+      } else {
+        delete manifest.devDependencies['theme-base'];
       }
 
       return JSON.stringify(manifest, null, 2);
@@ -161,7 +172,8 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('demo/js/demo.js', 'demo/js/demo.js', renameElement);
     this.copy('demo/css/demo-styles.html', 'demo/css/demo-styles.html', renameElement);
     this.copy('demo/index.html', 'demo/index.html', renameElement);
-    this.copy('images/cells.svg', 'images/cells.svg', renameElement);
+    this.copy('demo/images/cells.svg', 'demo/images/cells.svg', renameElement);
+    this.copy('.editorconfig', '.editorconfig', renameElement);
 
     if (this.includeWCT) {
       this.copy('test/index.html', 'test/index.html', renameElement);
