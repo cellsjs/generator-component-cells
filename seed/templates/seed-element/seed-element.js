@@ -22,7 +22,6 @@
         value: function() {
           return {
             title: 'Cells',
-            image: '../images/cells.svg'
           };
         }
       }

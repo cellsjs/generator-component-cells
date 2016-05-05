@@ -10,11 +10,6 @@
   background-color: var(--seed-element-background-color, --cells-background-primary);
 }
 
-img {
-  display: block;
-  margin: auto;
-  max-width: 30vw;
-}
 
 :host {
   @apply(--seed-element);

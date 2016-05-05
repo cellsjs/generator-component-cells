@@ -159,8 +159,6 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('demo/js/demo.js', 'demo/js/demo.js', renameElement);
     this.copy('demo/css/demo-styles.html', 'demo/css/demo-styles.html', renameElement);
     this.copy('demo/index.html', 'demo/index.html', renameElement);
-    this.copy('images/cells.svg', 'images/cells.svg', renameElement);
-
 
     if (this.i18n) {
       this.copy('locales/en.json', 'locales/en.json', renameElement);
