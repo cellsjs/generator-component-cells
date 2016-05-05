@@ -100,7 +100,6 @@ module.exports = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (props) {
       this.i18n = props.i18n;
-      this.includeWCT = true;
       this.useTheme = props.useTheme;
       if (this.useTheme) {
         this.themeName = props.themeName.theme || props.themeName;
@@ -132,9 +131,6 @@ module.exports = yeoman.generators.Base.extend({
 
       manifest.name = this.elementName;
       manifest.main = [this.elementName + '.html'];
-      if (!this.includeWCT) {
-        delete manifest.devDependencies['web-component-tester'];
-      }
 
       if (this.i18n) {
         manifest.keywords.push('i18n');
@@ -158,15 +154,13 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('seed-element.js', this.elementName + '.js', renameElement);
     this.copy('seed-element.html', this.elementName + '.html', renameElement);
     this.copy('seed-element.scss', this.elementName + '.scss', renameElement);
+    this.copy('test/index.html', 'test/index.html', renameElement);
+    this.copy('test/basic-test.html', 'test/basic-test.html', renameElement);
     this.copy('demo/js/demo.js', 'demo/js/demo.js', renameElement);
     this.copy('demo/css/demo-styles.html', 'demo/css/demo-styles.html', renameElement);
     this.copy('demo/index.html', 'demo/index.html', renameElement);
     this.copy('images/cells.svg', 'images/cells.svg', renameElement);
 
-    if (this.includeWCT) {
-      this.copy('test/index.html', 'test/index.html', renameElement);
-      this.copy('test/basic-test.html', 'test/basic-test.html', renameElement);
-    }
 
     if (this.i18n) {
       this.copy('locales/en.json', 'locales/en.json', renameElement);
