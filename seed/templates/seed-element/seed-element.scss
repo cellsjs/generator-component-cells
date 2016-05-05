@@ -1,16 +1,5 @@
 @import "bower_components/cells-sass/main";
 
 :host {
-  display: flex;
-  flex-direction: column;
-  font-family: var(--cells-fontDefault);
-  text-align: center;
-  min-height: 100%;
-  color: var(--seed-element-color, --cells-neutral-color);
-  background-color: var(--seed-element-background-color, --cells-background-primary);
-}
-
-
-:host {
   @apply(--seed-element);
 }
