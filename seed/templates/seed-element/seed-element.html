@@ -35,7 +35,7 @@ The following custom properties and mixins are available for styling:
 -->
 <dom-module id="seed-element">
   <template>
-    <style include="seed-element-styles"></style>
+    <style include="seed-element-styles seed-element-shared-styles"></style>
     <% if (i18n) { %>
     <h1>{{t('seed-element-welcome', lang)}}{{project.title}}</h1>
     <% } else { %>
