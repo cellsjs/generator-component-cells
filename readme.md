@@ -13,6 +13,17 @@ $ yo cells:seed your-component-name
 ```
 
 ## ChangeLog
+v1.2.0
+* Feat - Use dom-bind as a declarative app would.
+* Feat - Included a your-component-shared-styles in style of component, as an open style module to change children components' available custom properties from theme of project.
+* Feat - Added an .editorconfig
+* Style - Apply mobile specific styles using media queries.
+* Feat - Add unresolved attribute to body.
+* Feat - Empty component's starting styles (moved to demo)
+* Fix - Avoid error not finding correct locales url at first.
+* Feat - SVG image removed as file and put in demo, as component's content
+* Feat - Update version of an available theme
+
 v1.1.1
 * Fix - Add i18n keyword to json only if i18n is selected
 * Fix - cells-sass import route changed to bower_components
