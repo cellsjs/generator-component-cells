@@ -11,30 +11,31 @@
     <link rel="import" href='../../theme-base/theme-base.html'><% } %>
     <link rel="import" href='../../<%= themeName %>/<%= themeName %>.html'>
 <% } %>
-    <link rel="import" href="../seed-element.html">
-    <link rel="import" href="../../cells-demo-mobile/cells-demo-mobile.html">
-    <link rel="import" href="css/demo-styles.html">
 <% if (i18n) { %>
     <script src="js/I18nMsg.js"></script>
 <% } %>
-  </head>
-  <body ontouchstart>
-<% if (i18n) { %>
-    <!-- language selector: i18n purpose -->
-    <label class="lang" for="selector">Lang</label>
-    <select class="selector">
-      <option selected>en</option>
-      <option>es</option>
-      <!-- include as many languages you have: /locales/*.json -->
-    </select>
-    <!-- .end of language selector -->
-<% } %>
-    <cells-demo-mobile>
-      <seed-element></seed-element>
-    </cells-demo-mobile>
+    <link rel="import" href="../../cells-demo-mobile/cells-demo-mobile.html">
+    <link rel="import" href="../seed-element.html">
+    <link rel="import" href="css/demo-styles.html">
 
+  </head>
   <body unresolved ontouchstart>
     <template is="dom-bind">
+    <% if (i18n) { %>
+        <!-- language selector: i18n purpose -->
+        <div class="lang-selector">
+          <label class="lang" for="selector">Lang</label>
+          <select class="selector" id="selector">
+            <option selected>en</option>
+            <option>es</option>
+            <!-- include as many languages you have: /locales/*.json -->
+          </select>
+        </div>
+        <!-- .end of language selector -->
+    <% } %>
+        <cells-demo-mobile>
+          <seed-element>
+            <!-- Just some sample content you can happily erase -->
             <input type="text" class="bind-input" value="{{greeting::input}}" placeholder="Try declarative auto binding">
             <span>{{greeting}}</span>
             <svg width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -59,6 +60,9 @@
                   </g>
               </g>
             </svg>
+            <!-- .end of some sample content you can happily erase -->
+          </seed-element>
+        </cells-demo-mobile>
     </template>
     <script src="js/demo.js"></script>
   </body>
