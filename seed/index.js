@@ -76,7 +76,7 @@ module.exports = yeoman.generators.Base.extend({
           checked: false
         }, {
           name: 'glomo-ui-theme',
-          value: { theme: 'glomo-ui-theme', version: '#^0.1.0' },
+          value: { theme: 'glomo-ui-theme', version: '#^2.0.0' },
           checked: false
         }, {
           name: 'Other...',
