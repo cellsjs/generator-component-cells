@@ -33,6 +33,9 @@
       <seed-element></seed-element>
     </cells-demo-mobile>
 
+    <template is="dom-bind">
+            <input type="text" class="bind-input" value="{{greeting::input}}" placeholder="Try declarative auto binding">
+            <span>{{greeting}}</span>
             <svg width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <defs>
                   <linearGradient x1="57.3023789%" y1="40.8588327%" x2="17.2765852%" y2="68.5360454%" id="linearGradient-1">
@@ -55,6 +58,7 @@
                   </g>
               </g>
             </svg>
+    </template>
     <script src="js/demo.js"></script>
   </body>
 </html>
