@@ -5,9 +5,8 @@ window.I18nMsg.url = '../locales';
 var selectLang;
 
 document.addEventListener('WebComponentsReady', function() {
-  selectLang = Polymer.dom(this.root).querySelector('.selector');
-  selectLang.addEventListener('change', function() {
-    document.documentElement.lang = this.value;
-    I18nMsg.lang = document.documentElement.lang;
-  });
+  templateBind.changeLang = function(e) {
+    document.documentElement.lang = e.target.value;
+    I18nMsg.lang = e.target.value;
+  };
 });
