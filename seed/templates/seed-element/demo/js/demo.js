@@ -1,4 +1,4 @@
-var templateBind = Polymer.dom(this.root).querySelector('[is=dom-bind]');
+var templateBind = document.getElementById('tbind');
 
 // The dom-change event signifies when the template has stamped its DOM.
 templateBind.addEventListener('dom-change', function() {
