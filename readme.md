@@ -13,6 +13,12 @@ $ yo cells:seed your-component-name
 ```
 
 ## ChangeLog
+v1.2.1
+* style - hide selectors in bar along with the mobile shell in demo
+* feat - remove polymer import from demo index
+* feat - change lang declaratively
+* perf - use id to select template dom-bind
+
 v1.2.0
 * Feat - Use dom-bind as a declarative app would.
 * Feat - Included a your-component-shared-styles in style of component, as an open style module to change children components' available custom properties from theme of project.
