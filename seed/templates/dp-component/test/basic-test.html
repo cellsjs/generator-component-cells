@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+    <link rel="import" href="../../polymer/polymer.html">
+
+    <link rel="import" href="../seed-element.html">
+  </head>
+  <body>
+
+    <test-fixture id="myEl">
+      <template>
+        <seed-element></seed-element>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('<seed-element> tag', function() {
+        var myEl;
+
+        setup(function() {
+          myEl = fixture('myEl');
+        });
+
+        teardown(function() {
+          myEl.remove();
+        });
+
+        suite('in general', function() {
+          test('should be in document', function() {
+            expect(myEl).not.to.be.undefined;
+          });
+
+          test('should have "is" property equal to "seed-element"', function() {
+            expect(myEl).to.have.property('is');
+            expect(myEl.is).to.be.equal('seed-element');
+          });
+
+          test('should have "_serviceURL" property equal to ""', function() {
+            expect(myEl).to.have.property('_serviceURL');
+            expect(myEl._serviceURL).to.be.equal('my_serviceURL');
+          });
+        });
+
+        suite('Extend a base behavior', function() {
+          test('should have an implementation "_computeUrl" function that returns something that is not empty', function() {
+            var result = myEl._computeURL(myEl.endpoint, myEl._serviceURL);
+            
+            expect(myEl._computeURL).to.be.a('function');
+            expect(result).to.be.a('string');
+            expect(result).not.to.be.empty;
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -12,20 +12,18 @@ module.exports = yeoman.generators.Base.extend({
 
     this.argument('element-name', {
       desc: 'Tag name of the element and directory to generate.',
-      required: true,
+      required: true
     });
 
     this.option('skip-install', {
       desc: 'Whether bower dependencies should be installed',
-      defaults: true,
+      defaults: true
     });
 
     this.option('skip-install-message', {
       desc: 'Whether commands run should be shown',
-      defaults: false,
+      defaults: false
     });
-
-    this.sourceRoot(path.join(path.dirname(this.resolved), 'templates/seed-element'));
   },
   validate: function () {
     this.elementName = this['element-name'];
@@ -45,13 +43,39 @@ module.exports = yeoman.generators.Base.extend({
     var done = this.async();
 
     // Have Yeoman greet the user.
-    this.log(yosay('Out of the box I include Cells\'s seed-element.'));
+    this.log(yosay('Out of the box I include a Cells\'s component.'));
 
     var prompts = [{
+        name: 'type',
+        message: 'Which type is your component?',
+        type: 'list',
+        choices:[{
+            name: 'ui-component',
+            value: 'ui-component',
+            checked: false
+          }, {
+            name: 'dp-component',
+            value: 'dp-component',
+            checked: false
+          }, {
+            name: 'dm-component',
+            value: 'dm-component',
+            checked: false
+          }]
+      }, {
+        when: function (resp) {
+          return resp.type;
+        },
+        when: function (answers) {
+          return answers.type === 'ui-component';
+        },
         name: 'i18n',
         message: 'Is your component going to use i18n?',
         type: 'confirm'
       }, {
+        when: function (resp) {
+          return resp.i18n;
+        },
         name: 'useTheme',
         message: 'Would you use a theme?',
         type: 'confirm'
@@ -95,16 +119,43 @@ module.exports = yeoman.generators.Base.extend({
         name: 'themeBase',
         message: 'Want to use on top of theme-base?',
         type: 'confirm'
+
+
+      }, {
+        when: function (resp) {
+          return resp.type;
+        },
+        when: function (answers) {
+          return answers.type === 'dp-component';
+        },
+        name: 'dp',
+        message: 'Generate data provider component?',
+        type: 'confirm'
+
+
+      }, {
+        when: function (resp) {
+          return resp.type;
+        },
+        when: function (answers) {
+          return answers.type === 'dm-component';
+        },
+        name: 'dm',
+        message: 'Generate data manager component?',
+        type: 'confirm'
       }
     ];
 
     this.prompt(prompts, function (props) {
-      this.i18n = props.i18n;
-      this.useTheme = props.useTheme;
-      if (this.useTheme) {
-        this.themeName = props.themeName.theme || props.themeName;
-        this.themeVersion = props.themeName.version || '';
-        this.themeBase = props.themeBase;
+      this.type = props.type;
+      if (this.type === 'ui-component') {
+        this.i18n = props.i18n;
+        this.useTheme = props.useTheme;
+        if (this.useTheme) {
+          this.themeName = props.themeName.theme || props.themeName;
+          this.themeVersion = props.themeName.version || '';
+          this.themeBase = props.themeBase;
+        }
       }
 
       done();
@@ -112,9 +163,20 @@ module.exports = yeoman.generators.Base.extend({
 
   },
   seed: function () {
+    var elementName = this.elementName;
+    var themeBase = this.themeBase;
+    var themeName = this.themeName;
+    var elementRoute = this.type;
+    var thereIsI18n = this.i18n;
+    var thereIsTheme = this.useTheme;
+    var isUi = (this.type === 'ui-component');
+    var isDp = (this.type === 'dp-component');
+    var isDm = (this.type === 'dm-component');
 
-    var renameElement = function (file) {
-      return file.replace(/seed-element/g, this.elementName);
+    this.sourceRoot(path.join(path.dirname(this.resolved), 'templates/' + elementRoute));
+
+    var renamedElement = function (file) {
+      return file.replace(/seed-element/g, elementName);
     }.bind(this);
 
     // Handle bug where npm has renamed .gitignore to .npmignore
@@ -127,21 +189,21 @@ module.exports = yeoman.generators.Base.extend({
 
     this.copy('bower.json', 'bower.json', function(file) {
       var manifest = JSON.parse(file);
-      var theme_repo_url = 'https://descinet.bbva.es/stash/scm/ct/' + this.themeName + '.git' + this.themeVersion;
+      var theme_repo_url = 'https://descinet.bbva.es/stash/scm/ct/' + themeName + '.git' + this.themeVersion;
 
-      manifest.name = this.elementName;
-      manifest.main = [this.elementName + '.html'];
+      manifest.name = elementName;
+      manifest.main = [elementName + '.html'];
 
-      if (this.i18n) {
+      if (thereIsI18n) {
         manifest.keywords.push('i18n');
       } else {
         delete manifest.dependencies['cells-i18n-behavior'];
       }
 
       // Add theme dependency
-      if (this.useTheme) {
-        manifest.devDependencies[this.themeName] = theme_repo_url;
-        if(!this.themeBase && this.themeName !== 'theme-base') {
+      if (thereIsTheme) {
+        manifest.devDependencies[themeName] = theme_repo_url;
+        if(!themeBase && themeName !== 'theme-base') {
           delete manifest.devDependencies['theme-base'];
         }
       }
@@ -149,22 +211,32 @@ module.exports = yeoman.generators.Base.extend({
       return JSON.stringify(manifest, null, 2);
     }.bind(this));
 
-    this.copy('index.html', 'index.html', renameElement);
-    this.copy('README.md', 'README.md', renameElement);
-    this.copy('seed-element.js', this.elementName + '.js', renameElement);
-    this.copy('seed-element.html', this.elementName + '.html', renameElement);
-    this.copy('seed-element.scss', this.elementName + '.scss', renameElement);
-    this.copy('test/index.html', 'test/index.html', renameElement);
-    this.copy('test/basic-test.html', 'test/basic-test.html', renameElement);
-    this.copy('demo/js/demo.js', 'demo/js/demo.js', renameElement);
-    this.copy('demo/css/demo-styles.html', 'demo/css/demo-styles.html', renameElement);
-    this.copy('demo/index.html', 'demo/index.html', renameElement);
-    this.copy('.editorconfig', '.editorconfig', renameElement);
+    this.copy('index.html', 'index.html', renamedElement);
+    this.copy('README.md', 'README.md', renamedElement);
+    this.copy('.editorconfig', '.editorconfig', renamedElement);
+    this.copy('seed-element.js', elementName + '.js', renamedElement);
+    this.copy('seed-element.html', elementName + '.html', renamedElement);
 
-    if (this.i18n) {
-      this.copy('locales/en.json', 'locales/en.json', renameElement);
-      this.copy('locales/es.json', 'locales/es.json', renameElement);
-      this.copy('demo/js/I18nMsg.js', 'demo/js/I18nMsg.js', renameElement);
+    this.copy('test/index.html', 'test/index.html', renamedElement);
+    this.copy('test/basic-test.html', 'test/basic-test.html', renamedElement);
+    
+    this.copy('demo/js/demo.js', 'demo/js/demo.js', renamedElement);
+    this.copy('demo/index.html', 'demo/index.html', renamedElement);
+
+    if (isUi) {
+      this.copy('seed-element.scss', elementName + '.scss', renamedElement);
+      this.copy('demo/css/demo-styles.html', 'demo/css/demo-styles.html', renamedElement);
+
+      if (thereIsI18n) {
+        this.copy('locales/en.json', 'locales/en.json', renamedElement);
+        this.copy('locales/es.json', 'locales/es.json', renamedElement);
+        this.copy('demo/js/I18nMsg.js', 'demo/js/I18nMsg.js', renamedElement);
+      }
+    }
+
+    if (isDm) {
+      this.copy('demo/mocks/mock.js', 'demo/mocks/mock.js', renamedElement);
+      this.copy('test/payload-test.html', 'test/payload-test.html', renamedElement);
     }
   },
   install: function () {
