@@ -119,30 +119,6 @@ module.exports = yeoman.generators.Base.extend({
         name: 'themeBase',
         message: 'Want to use on top of theme-base?',
         type: 'confirm'
-
-
-      }, {
-        when: function (resp) {
-          return resp.type;
-        },
-        when: function (answers) {
-          return answers.type === 'dp-component';
-        },
-        name: 'dp',
-        message: 'Generate data provider component?',
-        type: 'confirm'
-
-
-      }, {
-        when: function (resp) {
-          return resp.type;
-        },
-        when: function (answers) {
-          return answers.type === 'dm-component';
-        },
-        name: 'dm',
-        message: 'Generate data manager component?',
-        type: 'confirm'
       }
     ];
 
