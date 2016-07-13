@@ -1,0 +1,19 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+
+
+@demo demo/index.html
+-->
+
+<dom-module id="seed-element">
+  <template>
+    <dp-seed-element id="dp" on-response="_onResponse" on-error="_onError">
+    </dp-seed-element>
+    <dp-seed-element-2 id="dp2" last-response="{{dp2response}}" last-error="{{dp2error}}">
+    </dp-seed-element-2>
+  </template>
+  
+  <script src="seed-element.js"></script>
+</dom-module>
+

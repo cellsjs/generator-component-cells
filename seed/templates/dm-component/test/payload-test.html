@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+    <link rel="import" href="../../polymer/polymer.html">
+    <link rel="import" href="../../cells-models-catalog/cells-models-catalog.html">
+
+    <link rel="import" href="../seed-element.html">
+  </head>
+  <body>
+
+    <test-fixture id="myEl">
+      <template>
+        <seed-element></seed-element>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('<seed-element> tag', function() {
+        var myEl;
+        var _CMC = cellsModelsCatalog;
+
+        setup(function() {
+          myEl = fixture('myEl');
+        });
+
+        teardown(function() {
+          myEl.remove();
+        });
+
+        suite('in general', function() {
+          test('Cells models "out" working as expected', function(done) {
+            myEl.addEventListener('my-event', function(event) {
+              expect(_CMC./* MyModel */.model.test(/* event payload */)).to.be.true;
+              done();
+            });
+
+            myEl._onResponse(/* mock response from provider */);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

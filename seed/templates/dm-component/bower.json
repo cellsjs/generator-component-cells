@@ -1,0 +1,26 @@
+{
+  "name": "seed-element",
+  "version": "1.0.0",
+  "description": "Your component description",
+  "keywords": [
+    "dm",
+    "data",
+    "manager"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page",
+    "web-component-tester": "*",
+    "test-fixture": "polymerelements/test-fixture#^1.0.0",
+    "paper-button": "PolymerElements/paper-button",
+    "paper-input": "PolymerElements/paper-input",
+    "paper-card": "PolymerElements/paper-card",
+    "service-caller-form": "https://descinet.bbva.es/stash/scm/CEL/service-caller-form.git",
+    "cells-models-catalog": "https://descinet.bbva.es/stash/scm/cat/cells-models-catalog.git"
+  },
+  "main": [
+    "seed-element.html"
+  ]
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title>Demo seed-element</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>    
+    <link rel="import" href="../../polymer/polymer.html">
+    <link rel="import" href="../../paper-card/paper-card.html">
+    <link rel="import" href="../../paper-input/paper-input.html">
+    <link rel="import" href="../../paper-button/paper-button.html">
+    <link rel='import' href='../../service-caller-form/service-caller-form.html'>
+
+    <script src="mocks/mock.js"></script>
+
+    <link rel="import" href="../seed-element.html">
+  </head>
+
+  <body>
+    <template id="demo" is="dom-bind">
+      <style is="custom-style">
+        paper-card {
+          display: block!important;
+          margin: 10px 0;
+        }
+      </style>
+
+      <!-- Required data -->
+      <h3> Mock mode </h3>
+      <paper-button id="sendingMock" on-click="_getInfoFromMock" raised>Send (Mock)</paper-button>
+
+      <h3> Real mode</h3>
+      <paper-input id="docIdInput" label="docId" value="{{docId}}"></paper-input>
+      <paper-input id="tsecInput" label="tsec" value="{{tsec}}"></paper-input>
+      <paper-input id="endpoint" label="endpoint" value="{{endpoint}}"></paper-input>
+      <paper-button id="customerIdSendingReal" on-click="_getInfoFromDP" raised>Send (DataProvider)</paper-button>
+
+
+      <!-- Data Manager -->
+      <seed-element id="dm" endpoint="{{endpoint}}"></seed-element>
+
+      <service-caller-form></service-caller-form>
+
+
+      <!-- Response -->
+      <paper-card heading="response">
+        <div class="card-content">
+          {{response}}
+        </div>
+      </paper-card>
+
+      <!-- Error -->
+      <paper-card heading="error">
+        <div class="card-content">
+          {{error}}
+        </div>
+      </paper-card>
+    </template>
+  </body>
+</html>
