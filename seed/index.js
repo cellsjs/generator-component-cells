@@ -50,15 +50,15 @@ module.exports = yeoman.generators.Base.extend({
         message: 'Which type is your component?',
         type: 'list',
         choices:[{
-            name: 'ui-component',
+            name: 'UI (purely graphical)',
             value: 'ui-component',
             checked: false
           }, {
-            name: 'dp-component',
+            name: 'DP (data provider)',
             value: 'dp-component',
             checked: false
           }, {
-            name: 'dm-component',
+            name: 'DM (data manager)',
             value: 'dm-component',
             checked: false
           }]
