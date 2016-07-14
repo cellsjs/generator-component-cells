@@ -195,7 +195,7 @@ module.exports = yeoman.generators.Base.extend({
 
     this.copy('test/index.html', 'test/index.html', renamedElement);
     this.copy('test/basic-test.html', 'test/basic-test.html', renamedElement);
-    
+
     this.copy('demo/js/demo.js', 'demo/js/demo.js', renamedElement);
     this.copy('demo/index.html', 'demo/index.html', renamedElement);
 
@@ -211,7 +211,8 @@ module.exports = yeoman.generators.Base.extend({
     }
 
     if (isDm) {
-      this.copy('demo/mocks/mock.js', 'demo/mocks/mock.js', renamedElement);
+      this.copy('demo/mocks/mocks.js', 'demo/mocks/mocks.js', renamedElement);
+      this.copy('test/mocks/mocks.js', 'test/mocks/mocks.js', renamedElement);
       this.copy('test/payload-test.html', 'test/payload-test.html', renamedElement);
     }
   },

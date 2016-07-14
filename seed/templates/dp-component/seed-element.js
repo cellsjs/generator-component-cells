@@ -18,33 +18,16 @@
       _serviceURL: {
         type: String,
         readonly: true,
-        value: ''
+        value: '<your service Url>'
       }
     },
 
-    /**
-     * Custom handler for response, to be executed into cells-ajax-behavior response handler as a callback
-     * Optional
-     */
-    _customHandleResponse: function(request) {
-
-    },
-
-    /**
-     * Custom handler for error, to be executed into cells-ajax-behavior error handler as a callback
-     * Optional
-     */
-    _customHandleError: function(request) {
-
-    },
-
     /*
-     * Return requests properties. See iron-ajax properties.
+     * Return requests properties.
      */
     getRequestProperties: function() {
       return {
-        success: this._customHandleResponse.bind(this),
-        error: this._customHandleError.bind(this)
+        // See cells-ajax and iron-ajax properties.
       };
     }
   });

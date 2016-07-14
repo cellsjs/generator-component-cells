@@ -29,17 +29,20 @@
        * @type {}
        */
       dp2error: {
-        type: ,
+        type: <your type>,
         observer: '_errorObserver'
       }
     },
 
     /**
-     * Initializes the data providers.
+     * Initializes the data providers, generally by calling their generateRequest method. You may then orchestrate the promises they return, listen to their 'response' and 'error' events or observe their last-response and last-error properties.
      */
     starterMethod: function() {
-      dp.generateRequest();
-      dp2.generateRequest();
+      var p1 = dp.generateRequest();
+      var p2 = dp2.generateRequest();
+      Promise.all([p1,p2]).then(function(values) {
+        console.log('Both providers have responded');
+      });
     },
 
     /**
