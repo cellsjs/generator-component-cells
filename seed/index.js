@@ -64,24 +64,21 @@ module.exports = yeoman.generators.Base.extend({
           }]
       }, {
         when: function (resp) {
-          return resp.type;
-        },
-        when: function (answers) {
-          return answers.type === 'ui-component';
+          return resp.type === 'ui-component';
         },
         name: 'i18n',
         message: 'Is your component going to use i18n?',
         type: 'confirm'
       }, {
         when: function (resp) {
-          return resp.i18n;
+          return resp.type === 'ui-component';
         },
         name: 'useTheme',
         message: 'Would you use a theme?',
         type: 'confirm'
       }, {
         when: function (resp) {
-          return resp.useTheme;
+          return (resp.type === 'ui-component') && (resp.useTheme === true);
         },
         name: 'themeName',
         message: 'What\'s your component\'s theme?',
@@ -108,7 +105,7 @@ module.exports = yeoman.generators.Base.extend({
         }]
       }, {
         when: function (resp) {
-          return resp.themeName === 'Other...';
+          return (resp.type === 'ui-component') && (resp.useTheme === true) && (resp.themeName === 'Other...');
         },
         name: 'themeName',
         message: 'What\'s the theme name?'
