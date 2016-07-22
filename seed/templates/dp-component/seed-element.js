@@ -27,6 +27,7 @@
      */
     getRequestProperties: function() {
       return {
+
         // See cells-ajax and iron-ajax properties.
       };
     }
