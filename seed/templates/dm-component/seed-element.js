@@ -20,7 +20,7 @@
        * @type {}
        */
       dp2response: {
-        type: <your type>,
+        type: YourType,
         observer: '_responseObserver'
       },
 
@@ -29,7 +29,7 @@
        * @type {}
        */
       dp2error: {
-        type: <your type>,
+        type: YourType,
         observer: '_errorObserver'
       }
     },
