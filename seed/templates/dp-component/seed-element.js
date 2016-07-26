@@ -1,5 +1,4 @@
 (function() {
-
   'use strict';
 
   Polymer({
@@ -12,21 +11,24 @@
 
     properties: {
      /**
-      * Service URL. Added to the endpoint by default. Implement _computeApiUrl to override this.
+      * Service URL. Added to the endpoint by default. Implement _computeUrl to override this.
       * It must be readOnly
+      * @type {String}
       */
       _serviceURL: {
         type: String,
-        readonly: true,
-        value: '<your service Url>'
+        value: '<your service Url>',
+        readonly: true
       }
     },
 
-    /*
+    /**
      * Return requests properties.
+     * @return {object}
      */
-    getRequestProperties: function() {
+    _getRequestProperties: function() {
       return {
+
         // See cells-ajax and iron-ajax properties.
       };
     }

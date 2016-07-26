@@ -7,15 +7,14 @@
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
     <script src="../../test-fixture/test-fixture-mocha.js"></script>
-    <script src="./mocks/mocks.js"></script>
+    <script src="mocks/mocks.js"></script>
 
     <link rel="import" href="../../polymer/polymer.html">
     <link rel="import" href="../../cells-models-catalog/cells-models-catalog.html">
-
     <link rel="import" href="../seed-element.html">
   </head>
-  <body>
 
+  <body>
     <test-fixture id="myEl">
       <template>
         <seed-element></seed-element>
@@ -25,22 +24,32 @@
     <script>
       suite('<seed-element> tag', function() {
         var myEl;
+        var myHandler;
         var _CMC = cellsModelsCatalog;
+        var responseEvent = /* my-response-event */;
 
         setup(function() {
           myEl = fixture('myEl');
         });
 
         teardown(function() {
+          myEl.removeEventListener(responseEvent, handler);
           myEl.remove();
         });
 
         suite('in general', function() {
           test('Cells models "out" working as expected', function(done) {
-            myEl.addEventListener('my-event', function(event) {
-              expect(_CMC./* MyModel */.model.test(/* event payload */)).to.be.true;
-              done();
-            });
+            
+            myHandler = function(eventName, done) {
+              
+              var handler = function(event) {
+                expect(_CMC./* MyModel */.model.test(/* event payload */)).to.be.true;
+                done();
+              };
+
+              myEl.addEventListener(eventName, handler);
+              return handler;
+            }(responseEvent, done); // adds listener to your CMD test and gets the reference so you can remove listener properly
 
             myEl._onResponse(/* mock response from provider */);
           });

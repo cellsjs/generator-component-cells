@@ -1,5 +1,4 @@
 (function() {
-
   'use strict';
 
   Polymer({
@@ -47,7 +46,7 @@
 
     /**
      * Listener for 'response' event from data provider.
-     * @param  {Event} response
+     * @param {Event} response
      */
     _onResponse: function(e) {
       // fire CDM
@@ -55,7 +54,7 @@
 
     /**
      * Listener for 'error' event from data provider.
-     * @param  {Event} error
+     * @param {Event} error
      */
     _onError: function(e) {
       // fire error
@@ -63,7 +62,7 @@
 
     /**
      * Observer for 'last-response' property from data provider by data binding.
-     * @param  {Event} response
+     * @param {Event} response
      */
     _responseObserver: function(e) {
       // fire CDM
@@ -71,7 +70,7 @@
 
     /**
      * Observer for 'last-error' property from data provider by data binding.
-     * @param  {Event} error
+     * @param {Event} error
      */
     _errorObserver: function(e) {
       // fire error

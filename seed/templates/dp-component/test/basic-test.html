@@ -9,11 +9,10 @@
     <script src="../../test-fixture/test-fixture-mocha.js"></script>
 
     <link rel="import" href="../../polymer/polymer.html">
-
     <link rel="import" href="../seed-element.html">
   </head>
-  <body>
 
+  <body>
     <test-fixture id="myEl">
       <template>
         <seed-element></seed-element>
@@ -42,9 +41,8 @@
             expect(myEl.is).to.be.equal('seed-element');
           });
 
-          test('should have "_serviceURL" property equal to ""', function() {
+          test('should have "_serviceURL" property', function() {
             expect(myEl).to.have.property('_serviceURL');
-            expect(myEl._serviceURL).to.be.equal('my_serviceURL');
           });
         });
 

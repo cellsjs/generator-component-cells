@@ -1,11 +1,12 @@
 (function() {
-  'use strict'
+  'use strict';
 
   document.addEventListener('WebComponentsReady', function() {
     var serviceForm = document.querySelector('service-caller-form');
+
     serviceForm.set('service', {
-      component: "seed-element",
-      name: "seed-element",
+      component: 'seed-element',
+      name: 'seed-element',
       params: [
         {
           name: 'param1',
@@ -26,15 +27,15 @@
         */
 
         serviceForm.mockComponent.$.dp._computeURL = function() {
-            return './mock.json' //you need a mock.json file
-        }
+          return 'mocks/mocks.json' //you need a mock.json file
+        };
         serviceForm.mockComponent.$.dp.endpoint = ''; //triggers _computeURL
         serviceForm.mockComponent.$.dp._getRequestProperties = function() {
           return {}; //defaults to method: 'GET' and handleAs: 'json'
-        }
+        };
 
         //if necessary, call your component's 'starterMethod'
-        serviceForm.mockComponent[this.service.requestMethod]();
+        serviceForm.mockComponent[serviceForm.service.requestMethod]();
       }
     });
   });

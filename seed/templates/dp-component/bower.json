@@ -7,6 +7,9 @@
     "data",
     "provider"
   ],
+  "main": [
+    "seed-element.html"
+  ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
     "cells-ajax-behavior": "https://descinet.bbva.es/stash/scm/bbvacellsapi/cells-ajax-behavior.git"
@@ -16,8 +19,5 @@
     "web-component-tester": "*",
     "test-fixture": "polymerelements/test-fixture#^1.0.0",
     "service-caller-form": "https://descinet.bbva.es/stash/scm/CEL/service-caller-form.git"
-  },
-  "main": [
-    "seed-element.html"
-  ]
+  }
 }
