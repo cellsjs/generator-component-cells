@@ -7,13 +7,6 @@ Example:
 <seed-element></seed-element>
 ```
 
-## Data model
-[comment]: <> (use either one of the data model docs examples)
+## Url to Canonical Data Model (CDM) used for seed-element
 
-Canonical DM: 'entityName', example available [List of entities]
-
-Component own DM example:
-
-```json
-{}
-```
+https://descinet.bbva.es/stash/projects/CAT/repos/cells-models-catalog/browse/lib/models/
