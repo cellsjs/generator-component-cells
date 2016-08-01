@@ -5,7 +5,7 @@
  "keywords": [],
  "ignore": [],
  "dependencies": {
-   "polymer": "Polymer/polymer#^1.2.0",
+   "polymer": "Polymer/polymer#^1.6.0",
    "cells-i18n-behavior":"https://descinet.bbva.es/stash/scm/cbh/cells-i18n-behavior.git#2.0.2"
  },
  "devDependencies": {
