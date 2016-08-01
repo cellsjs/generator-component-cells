@@ -13,6 +13,11 @@ $ yo cells:seed your-component-name
 ```
 
 ## ChangeLog
+v1.3.1
+* Fix - in DataManagers and DataProviders templates
+* Fix - html import in demo of ui-component template
+* Refactor - styles of ui-component template more visible in demo/index.html
+
 v1.3.0
 * Feat - added scaffold of DataManagers and DataProviders
 * Feat - upgrade a couple of dependencies
