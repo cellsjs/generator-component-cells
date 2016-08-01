@@ -24,32 +24,22 @@
     <script>
       suite('<seed-element> tag', function() {
         var myEl;
-        var myHandler;
         var _CMC = cellsModelsCatalog;
-        var responseEvent = /* my-response-event */;
 
         setup(function() {
           myEl = fixture('myEl');
         });
 
         teardown(function() {
-          myEl.removeEventListener(responseEvent, myHandler);
           myEl.remove();
         });
 
         suite('in general', function() {
           test('Cells models "out" working as expected', function(done) {
-            
-            myHandler = function(eventName, done) {
-              
-              var handler = function(event) {
-                expect(_CMC./* MyModel */.model.test(/* event payload */)).to.be.true;
-                done();
-              };
-
-              myEl.addEventListener(eventName, handler);
-              return handler;
-            }(responseEvent, done); // adds listener to your CMD test and gets the reference so you can remove listener properly
+            myEl.addEventListener(/* my-event */, function(event) {
+              expect(_CMC./* MyModel */.model.test(/* event payload */)).to.be.true;
+              done();
+            });
 
             myEl._onResponse(/* mock response from provider */);
           });

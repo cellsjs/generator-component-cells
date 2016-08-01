@@ -10,11 +10,11 @@
     ],
 
     properties: {
-     /**
-      * Service URL. Added to the endpoint by default. Implement _computeURL to override this.
-      * It must be readOnly
-      * @type {String}
-      */
+      /**
+       * Service URL. Added to the endpoint by default. Implement _computeURL to override this.
+       * It must be readOnly
+       * @type {String}
+       */
       _serviceURL: {
         type: String,
         value: '<your service Url>',
