@@ -7,6 +7,9 @@
     "data",
     "manager"
   ],
+  "main": [
+    "seed-element.html"
+  ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0"
   },
@@ -16,8 +19,5 @@
     "test-fixture": "polymerelements/test-fixture#^1.0.0",
     "service-caller-form": "https://descinet.bbva.es/stash/scm/CEL/service-caller-form.git",
     "cells-models-catalog": "https://descinet.bbva.es/stash/scm/cat/cells-models-catalog.git"
-  },
-  "main": [
-    "seed-element.html"
-  ]
+  }
 }

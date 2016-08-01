@@ -1,16 +1,29 @@
 <link rel="import" href="../polymer/polymer.html">
 
 <!--
+# seed-element
 
+Data manager description.
+
+Example:
+```html
+<seed-element></seed-element>
+```
+
+## Url to Canonical Data Model (CDM) used for seed-element
+
+https://descinet.bbva.es/stash/projects/CAT/repos/cells-models-catalog/browse/lib/models/
+
+```
 
 @demo demo/index.html
 -->
 
 <dom-module id="seed-element">
   <template>
-    <dp-seed-element id="dp" on-response="_onResponse" on-error="_onError">
+    <dp-seed-element id="dp" endpoint="[[endpoint]]" on-response="_onResponse" on-error="_onError">
     </dp-seed-element>
-    <dp-seed-element-2 id="dp2" last-response="{{dp2response}}" last-error="{{dp2error}}">
+    <dp-seed-element-2 id="dp2" endpoint="[[endpoint]]" last-response="{{dp2response}}" last-error="{{dp2error}}">
     </dp-seed-element-2>
   </template>
   
