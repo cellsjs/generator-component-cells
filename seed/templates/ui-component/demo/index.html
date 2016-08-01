@@ -31,8 +31,24 @@
         <!-- .end of language selector -->
     <% } %>
         <cells-demo-mobile>
-          <seed-element>
+          <seed-element class="demo">
             <!-- Just some sample content you can happily erase -->
+            <style is="custom-style">
+              seed-element {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                min-height: 100%;
+                font-family: var(--cells-fontDefault);
+                color: var(--cells-neutral-color);
+                background-color: var(--cells-background-primary);
+              }
+              svg {
+                display: block;
+                margin: auto;
+                max-width: 30vw;
+              }
+            </style>
             <input type="text" class="bind-input" value="{{greeting::input}}" placeholder="Try declarative auto binding">
             <span>{{greeting}}</span>
             <svg width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
