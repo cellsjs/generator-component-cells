@@ -17,8 +17,7 @@
         }
       ],
       requestMethod: 'generateRequest',
-      responseEvent: 'response',
-      errorEvent: 'error'
+      events: ['response', 'error']
     });
   });
 }());
