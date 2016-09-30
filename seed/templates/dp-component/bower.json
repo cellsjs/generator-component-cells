@@ -18,6 +18,6 @@
     "iron-component-page": "PolymerElements/iron-component-page",
     "web-component-tester": "Polymer/web-component-tester#^4.0.0",
     "test-fixture": "polymerelements/test-fixture#^1.0.0",
-    "service-caller-form": "ssh://git@globaldevtools.bbva.com:7999/cel/cells-service-caller-form.git#^1.0.0"
+    "cells-service-caller-form": "ssh://git@globaldevtools.bbva.com:7999/cel/cells-service-caller-form.git#^1.0.0"
   }
 }

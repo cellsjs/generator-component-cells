@@ -84,8 +84,8 @@ module.exports = yeoman.generators.Base.extend({
         message: 'What\'s your component\'s theme?',
         type: 'list',
         choices:[{
-          name: 'theme-base',
-          value: { theme: 'theme-base', version: '#^4.0.12' },
+          name: 'cells-theme-base',
+          value: { theme: 'cells-theme-base', version: '#^4.0.12' },
           checked: false
         }, {
           name: 'cells-composer-ui-theme',
@@ -93,11 +93,11 @@ module.exports = yeoman.generators.Base.extend({
           checked: false
         }, {
           name: 'cc-ui-theme',
-          value: { theme: 'cc-ui-theme', version: '#~0.1.14' },
+          value: { theme: 'cc-ui-theme', version: '#^0.1.14' },
           checked: false
         }, {
-          name: 'glomo-ui-theme',
-          value: { theme: 'glomo-ui-theme', version: '#^3.0.0' },
+          name: 'cells-glomo-theme',
+          value: { theme: 'cells-glomo-theme', version: '#^3.0.0' },
           checked: false
         }, {
           name: 'Other...',
@@ -111,10 +111,10 @@ module.exports = yeoman.generators.Base.extend({
         message: 'What\'s the theme name?'
       }, {
         when: function(resp) {
-          return resp.useTheme && resp.themeName.theme !== 'theme-base';
+          return resp.useTheme && resp.themeName.theme !== 'cells-theme-base';
         },
         name: 'themeBase',
-        message: 'Want to use on top of theme-base?',
+        message: 'Want to use on top of cells-theme-base?',
         type: 'confirm'
       }, {
         when: function (resp) {
@@ -132,7 +132,8 @@ module.exports = yeoman.generators.Base.extend({
         type: 'checkbox',
         choices:[{
           name: 'cells-icons',
-          value: { name: 'cells-icons', version: '#^2.0.13' }
+          value: { name: 'cells-icons', version: '#^2.0.13' },
+          checked: false
         }, {
           name: 'iron-icons',
           value: { name: 'iron-icons', version: '#^1.1.3' },
@@ -160,6 +161,9 @@ module.exports = yeoman.generators.Base.extend({
           this.themeName = props.themeName.theme || props.themeName;
           this.themeVersion = props.themeName.version || '';
           this.themeBase = props.themeBase;
+        }
+
+        if (this.useIcons) {
           this.iconsName = props.iconsName;
           this.iconsVersion = props.iconsName.version || '';
         }
@@ -213,8 +217,8 @@ module.exports = yeoman.generators.Base.extend({
       // Add theme dependency
       if (thereIsTheme) {
         manifest.devDependencies[themeName] = theme_repo_url;
-        if(!themeBase && themeName !== 'theme-base') {
-          delete manifest.devDependencies['theme-base'];
+        if(!themeBase && themeName !== 'cells-theme-base') {
+          delete manifest.devDependencies['cells-theme-base'];
         }
       }
       

@@ -39,7 +39,7 @@
     starterMethod: function() {
       var p1 = this.$.dp.generateRequest();
       var p2 = this.$.dp2.generateRequest();
-      Promise.all([p1,p2]).then(function(values) {
+      Promise.all([p1, p2]).then(function(values) {
         console.log('Both providers have responded');
       });
     },

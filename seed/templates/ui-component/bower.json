@@ -12,7 +12,7 @@
    "cells-sass": "ssh://git@globaldevtools.bbva.com:7999/cel/cells-sass.git#^1.0.15",
    "cells-demo-mobile": "ssh://git@globaldevtools.bbva.com:7999/cel/cells-demo-mobile.git#^1.2.10",
    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-   "theme-base": "ssh://git@globaldevtools.bbva.com:7999/ct/cells-theme-base.git#^4.0.12",
+   "cells-theme-base": "ssh://git@globaldevtools.bbva.com:7999/ct/cells-theme-base.git#^4.0.12",
    "web-component-tester": "Polymer/web-component-tester#^4.0.0"
  },
  "main": [

@@ -8,9 +8,10 @@
     <script src="js/I18nMsg.js"></script><% } %>
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 <% if (useTheme) { %><% if (themeBase) { %>
-    <link rel="import" href='../../theme-base/theme-base.html'><% } %>
+    <link rel="import" href='../../cells-theme-base/cells-theme-base.html'><% } %>
     <link rel="import" href='../../<%= themeName %>/<%= themeName %>.html'><% } %>
-    <link rel="import" href="../../cells-icons/cells-icons.html">
+<% if (useIcons) { %><% for (var i in iconsName) { %>
+    <link rel="import" href='../../<%= iconsName[i].name %>/<%= iconsName[i].name %>.html'><% } %><% } %>
     <link rel="import" href="../../cells-demo-mobile/cells-demo-mobile.html">
     <link rel="import" href="../seed-element.html">
     <link rel="import" href="css/demo-styles.html">
