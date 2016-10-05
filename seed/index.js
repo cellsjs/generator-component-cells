@@ -89,15 +89,15 @@ module.exports = yeoman.generators.Base.extend({
           checked: false
         }, {
           name: 'cells-composer-ui-theme',
-          value: { theme: 'cells-composer-ui-theme', version: '#^0.4.1' },
+          value: { theme: 'cells-composer-ui-theme', version: '#^1.2.1' },
           checked: false
         }, {
           name: 'cc-ui-theme',
-          value: { theme: 'cc-ui-theme', version: '#^0.1.14' },
+          value: { theme: 'cc-ui-theme', version: '#^1.4.0' },
           checked: false
         }, {
           name: 'cells-glomo-theme',
-          value: { theme: 'cells-glomo-theme', version: '#^3.0.0' },
+          value: { theme: 'cells-glomo-theme', version: '#^4.1.3' },
           checked: false
         }, {
           name: 'Other...',
@@ -132,7 +132,7 @@ module.exports = yeoman.generators.Base.extend({
         type: 'checkbox',
         choices:[{
           name: 'cells-icons',
-          value: { name: 'cells-icons', version: '#^2.0.13' },
+          value: { name: 'cells-icons', version: '#^2.0.14' },
           checked: false
         }, {
           name: 'iron-icons',
@@ -140,7 +140,7 @@ module.exports = yeoman.generators.Base.extend({
           checked: false
         }, {
           name: 'coronita-icons',
-          value: { name: 'coronita-icons', version: '#^1.1.2' },
+          value: { name: 'coronita-icons', version: '#^1.1.3' },
           checked: false
         }, {
           name: 'banking-icons',
