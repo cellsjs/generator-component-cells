@@ -3,7 +3,7 @@
 Install:
 
 ```sh
-$ npm install -g generator-cells
+$ npm install -g generator-component-cells
 ```
 
 Run:
