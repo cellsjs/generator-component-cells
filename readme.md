@@ -13,6 +13,11 @@ $ yo component-cells:seed your-component-name
 ```
 
 ## ChangeLog
+v1.4.0
+* Feat - Jenkinsfile added
+* Feat - changed name of generator
+* Fix - in dp-component demo
+
 v1.3.1
 * Fix - in DataManagers and DataProviders templates
 * Fix - html import in demo of ui-component template
