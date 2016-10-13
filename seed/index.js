@@ -81,12 +81,12 @@ module.exports = yeoman.generators.Base.extend({
           return (resp.type === 'ui-component') && (resp.useTheme === true);
         },
         name: 'themeName',
-        message: 'What\'s your component\'s theme?',
-        type: 'list',
+        message: 'Which themes do you want to use?',
+        type: 'checkbox',
         choices:[{
           name: 'cells-theme-base',
           value: { theme: 'cells-theme-base', version: '#^4.0.12' },
-          checked: false
+          checked: true
         }, {
           name: 'cells-composer-ui-theme',
           value: { theme: 'cells-composer-ui-theme', version: '#^1.2.1' },
@@ -99,23 +99,7 @@ module.exports = yeoman.generators.Base.extend({
           name: 'cells-glomo-theme',
           value: { theme: 'cells-glomo-theme', version: '#^4.1.3' },
           checked: false
-        }, {
-          name: 'Other...',
-          checked: false
         }]
-      }, {
-        when: function (resp) {
-          return (resp.type === 'ui-component') && (resp.useTheme === true) && (resp.themeName === 'Other...');
-        },
-        name: 'themeName',
-        message: 'What\'s the theme name?'
-      }, {
-        when: function(resp) {
-          return resp.useTheme && resp.themeName.theme !== 'cells-theme-base';
-        },
-        name: 'themeBase',
-        message: 'Want to use on top of cells-theme-base?',
-        type: 'confirm'
       }, {
         when: function (resp) {
           return resp.type === 'ui-component';
@@ -158,9 +142,7 @@ module.exports = yeoman.generators.Base.extend({
         this.useIcons = props.useIcons;
 
         if (this.useTheme) {
-          this.themeName = props.themeName.theme || props.themeName;
-          this.themeVersion = props.themeName.version || '';
-          this.themeBase = props.themeBase;
+          this.themeName = props.themeName;
         }
 
         if (this.useIcons) {
@@ -175,7 +157,7 @@ module.exports = yeoman.generators.Base.extend({
   },
   seed: function () {
     var elementName = this.elementName;
-    var themeBase = this.themeBase;
+    // var themeBase = this.themeBase;
     var themeName = this.themeName;
     var icons = this.iconsName;
     var elementRoute = this.type;
@@ -202,12 +184,13 @@ module.exports = yeoman.generators.Base.extend({
 
     this.copy('bower.json', 'bower.json', function(file) {
       var manifest = JSON.parse(file);
-      var repo_url = 'ssh://git@globaldevtools.bbva.com:7999/ct/';
-      var theme_repo_url = repo_url + themeName + '.git' + this.themeVersion;
+      var base_repo_url = 'ssh://git@globaldevtools.bbva.com:7999/ct/';
       var icons_repo_url = '';
+      var theme_repo_url = '';
       manifest.name = elementName;
       manifest.main = [elementName + '.html'];
 
+      // Add i18n dependency
       if (thereIsI18n) {
         manifest.keywords.push('i18n');
       } else {
@@ -216,12 +199,12 @@ module.exports = yeoman.generators.Base.extend({
 
       // Add theme dependency
       if (thereIsTheme) {
-        manifest.devDependencies[themeName] = theme_repo_url;
-        if(!themeBase && themeName !== 'cells-theme-base') {
-          delete manifest.devDependencies['cells-theme-base'];
+        for (var j in themeName) {
+          theme_repo_url = base_repo_url + themeName[j].theme + '.git' + themeName[j].version;
+          manifest.devDependencies[themeName[j].theme] = theme_repo_url;
         }
       }
-      
+
       // Add icons dependency
       if (thereIsIcons) {
         for (var i in icons) {
@@ -229,9 +212,9 @@ module.exports = yeoman.generators.Base.extend({
             icons_repo_url = 'PolymerElements/' + icons[i].name + icons[i].version;
           }
           else{
-            icons_repo_url = repo_url + icons[i].name + '.git' + icons[i].version;
+            icons_repo_url = base_repo_url + icons[i].name + '.git' + icons[i].version;
           }
-          
+
           manifest.devDependencies[icons[i].name] = icons_repo_url;
         }
       }

@@ -7,11 +7,11 @@
     <% if (i18n) { %>
     <script src="js/I18nMsg.js"></script><% } %>
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-<% if (useTheme) { %><% if (themeBase) { %>
-    <link rel="import" href='../../cells-theme-base/cells-theme-base.html'><% } %>
-    <link rel="import" href='../../<%= themeName %>/<%= themeName %>.html'><% } %>
+<% if (useTheme) { %><% for (var i in themeName) { %>
+    <link rel="import" href='../../<%= themeName[i].theme %>/<%= themeName[i].theme %>.html'><% } %><% } %>
 <% if (useIcons) { %><% for (var i in iconsName) { %>
     <link rel="import" href='../../<%= iconsName[i].name %>/<%= iconsName[i].name %>.html'><% } %><% } %>
+
     <link rel="import" href="../../cells-demo-mobile/cells-demo-mobile.html">
     <link rel="import" href="../seed-element.html">
     <link rel="import" href="css/demo-styles.html">
