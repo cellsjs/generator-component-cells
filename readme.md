@@ -13,6 +13,11 @@ $ yo component-cells:seed your-component-name
 ```
 
 ## ChangeLog
+v1.5.0
+* Feat - icons library are included as multiple choice to include during creation
+* Feat - themes are multiple choice now
+* Feat - point dependencies of generated components to new migrated repositories
+
 v1.4.0
 * Feat - Jenkinsfile added
 * Feat - changed name of generator
