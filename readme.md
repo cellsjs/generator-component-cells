@@ -9,7 +9,7 @@ $ npm install -g generator-component-cells
 Run:
 
 ```sh
-$ yo cells:seed your-component-name
+$ yo component-cells:seed your-component-name
 ```
 
 ## ChangeLog
