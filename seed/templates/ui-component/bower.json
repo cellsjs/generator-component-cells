@@ -6,15 +6,14 @@
  "ignore": [],
  "dependencies": {
    "polymer": "Polymer/polymer#^1.6.0",
-   "cells-i18n-behavior":"https://descinet.bbva.es/stash/scm/cbh/cells-i18n-behavior.git#2.0.2"
+   "cells-i18n-behavior": "ssh://git@globaldevtools.bbva.com:7999/cbh/cells-i18n-behavior.git#2.0.2"
  },
  "devDependencies": {
-   "cells-icons": "https://descinet.bbva.es/stash/scm/ct/cells-icons.git#^1.0.0",
-   "cells-sass":"https://descinet.bbva.es/stash/scm/cel/cells-sass.git#^1.0.3",
-   "cells-demo-mobile": "https://descinet.bbva.es/stash/scm/cel/cells-demo-mobile.git#^1.0.0",
+   "cells-sass": "ssh://git@globaldevtools.bbva.com:7999/cel/cells-sass.git#^1.0.15",
+   "cells-demo-mobile": "ssh://git@globaldevtools.bbva.com:7999/cel/cells-demo-mobile.git#^1.2.10",
    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-   "theme-base": "https://descinet.bbva.es/stash/scm/ct/theme-base.git#^3.0.5",
-   "web-component-tester": "^3.0.0"
+   "cells-theme-base": "ssh://git@globaldevtools.bbva.com:7999/ct/cells-theme-base.git#^4.0.12",
+   "web-component-tester": "Polymer/web-component-tester#^4.0.0"
  },
  "main": [
    "seed-element.html"

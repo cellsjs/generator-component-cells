@@ -12,12 +12,12 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
-    "cells-ajax-behavior": "https://descinet.bbva.es/stash/scm/bbvacellsapi/cells-ajax-behavior.git"
+    "cells-ajax-behavior": "ssh://git@globaldevtools.bbva.com:7999/cbh/cells-ajax-behavior.git#1.5.13"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page",
-    "web-component-tester": "*",
+    "web-component-tester": "Polymer/web-component-tester#^4.0.0",
     "test-fixture": "polymerelements/test-fixture#^1.0.0",
-    "service-caller-form": "https://descinet.bbva.es/stash/scm/CEL/service-caller-form.git"
+    "cells-service-caller-form": "ssh://git@globaldevtools.bbva.com:7999/cel/cells-service-caller-form.git#^1.0.0"
   }
 }

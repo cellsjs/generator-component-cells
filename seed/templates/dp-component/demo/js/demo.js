@@ -2,7 +2,7 @@
   'use strict';
 
   document.addEventListener('WebComponentsReady', function() {
-    var serviceForm = document.querySelector('service-caller-form');
+    var serviceForm = document.querySelector('cells-service-caller-form');
 
     serviceForm.set('service', {
       component: 'seed-element',

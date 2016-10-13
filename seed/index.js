@@ -84,20 +84,20 @@ module.exports = yeoman.generators.Base.extend({
         message: 'What\'s your component\'s theme?',
         type: 'list',
         choices:[{
-          name: 'theme-base',
-          value: { theme: 'theme-base', version: '#^1.0.2' },
+          name: 'cells-theme-base',
+          value: { theme: 'cells-theme-base', version: '#^4.0.12' },
           checked: false
         }, {
           name: 'cells-composer-ui-theme',
-          value: { theme: 'cells-composer-ui-theme', version: '#^0.4.1' },
+          value: { theme: 'cells-composer-ui-theme', version: '#^1.2.1' },
           checked: false
         }, {
           name: 'cc-ui-theme',
-          value: { theme: 'cc-ui-theme', version: '#~0.1.14' },
+          value: { theme: 'cc-ui-theme', version: '#^1.4.0' },
           checked: false
         }, {
-          name: 'glomo-ui-theme',
-          value: { theme: 'glomo-ui-theme', version: '#^3.0.0' },
+          name: 'cells-glomo-theme',
+          value: { theme: 'cells-glomo-theme', version: '#^4.1.3' },
           checked: false
         }, {
           name: 'Other...',
@@ -111,11 +111,42 @@ module.exports = yeoman.generators.Base.extend({
         message: 'What\'s the theme name?'
       }, {
         when: function(resp) {
-          return resp.useTheme && resp.themeName.theme !== 'theme-base';
+          return resp.useTheme && resp.themeName.theme !== 'cells-theme-base';
         },
         name: 'themeBase',
-        message: 'Want to use on top of theme-base?',
+        message: 'Want to use on top of cells-theme-base?',
         type: 'confirm'
+      }, {
+        when: function (resp) {
+          return resp.type === 'ui-component';
+        },
+        name: 'useIcons',
+        message: 'Would you use a icons library?',
+        type: 'confirm'
+      }, {
+        when: function (resp) {
+          return (resp.type === 'ui-component') && (resp.useIcons === true);
+        },
+        name: 'iconsName',
+        message: 'What icons library do you want to use?',
+        type: 'checkbox',
+        choices:[{
+          name: 'cells-icons',
+          value: { name: 'cells-icons', version: '#^2.0.14' },
+          checked: false
+        }, {
+          name: 'iron-icons',
+          value: { name: 'iron-icons', version: '#^1.1.3' },
+          checked: false
+        }, {
+          name: 'coronita-icons',
+          value: { name: 'coronita-icons', version: '#^1.1.3' },
+          checked: false
+        }, {
+          name: 'banking-icons',
+          value: { name: 'banking-icons', version: '#^1.0.0' },
+          checked: false
+        }]
       }
     ];
 
@@ -124,10 +155,17 @@ module.exports = yeoman.generators.Base.extend({
       if (this.type === 'ui-component') {
         this.i18n = props.i18n;
         this.useTheme = props.useTheme;
+        this.useIcons = props.useIcons;
+
         if (this.useTheme) {
           this.themeName = props.themeName.theme || props.themeName;
           this.themeVersion = props.themeName.version || '';
           this.themeBase = props.themeBase;
+        }
+
+        if (this.useIcons) {
+          this.iconsName = props.iconsName;
+          this.iconsVersion = props.iconsName.version || '';
         }
       }
 
@@ -139,9 +177,11 @@ module.exports = yeoman.generators.Base.extend({
     var elementName = this.elementName;
     var themeBase = this.themeBase;
     var themeName = this.themeName;
+    var icons = this.iconsName;
     var elementRoute = this.type;
     var thereIsI18n = this.i18n;
     var thereIsTheme = this.useTheme;
+    var thereIsIcons = this.useIcons;
     var isUi = (this.type === 'ui-component');
     var isDp = (this.type === 'dp-component');
     var isDm = (this.type === 'dm-component');
@@ -162,8 +202,9 @@ module.exports = yeoman.generators.Base.extend({
 
     this.copy('bower.json', 'bower.json', function(file) {
       var manifest = JSON.parse(file);
-      var theme_repo_url = 'https://descinet.bbva.es/stash/scm/ct/' + themeName + '.git' + this.themeVersion;
-
+      var repo_url = 'ssh://git@globaldevtools.bbva.com:7999/ct/';
+      var theme_repo_url = repo_url + themeName + '.git' + this.themeVersion;
+      var icons_repo_url = '';
       manifest.name = elementName;
       manifest.main = [elementName + '.html'];
 
@@ -176,8 +217,22 @@ module.exports = yeoman.generators.Base.extend({
       // Add theme dependency
       if (thereIsTheme) {
         manifest.devDependencies[themeName] = theme_repo_url;
-        if(!themeBase && themeName !== 'theme-base') {
-          delete manifest.devDependencies['theme-base'];
+        if(!themeBase && themeName !== 'cells-theme-base') {
+          delete manifest.devDependencies['cells-theme-base'];
+        }
+      }
+      
+      // Add icons dependency
+      if (thereIsIcons) {
+        for (var i in icons) {
+          if(icons[i].name === 'iron-icons') {
+            icons_repo_url = 'PolymerElements/' + icons[i].name + icons[i].version;
+          }
+          else{
+            icons_repo_url = repo_url + icons[i].name + '.git' + icons[i].version;
+          }
+          
+          manifest.devDependencies[icons[i].name] = icons_repo_url;
         }
       }
 
