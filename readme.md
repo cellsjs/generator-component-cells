@@ -13,6 +13,10 @@ $ yo component-cells:seed your-component-name
 ```
 
 ## ChangeLog
+v2.0.0
+* Feat - Upgrade major version of multi-language (cells-i18n-behavior)
+* Style - fix to pass linter
+
 v1.5.0
 * Feat - icons library are included as multiple choice to include during creation
 * Feat - themes are multiple choice now
@@ -20,7 +24,7 @@ v1.5.0
 
 v1.4.0
 * Feat - Jenkinsfile added
-* Feat - changed name of generator
+* Feat - changed name of generator (generator-cells > generator-component-cells)
 * Fix - in dp-component demo
 
 v1.3.1
