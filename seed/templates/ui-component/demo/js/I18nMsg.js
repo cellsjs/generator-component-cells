@@ -3,6 +3,7 @@ window.I18nMsg.url = '../locales';
 
 // Demo i18n
 var selectLang;
+var templateBind;
 
 document.addEventListener('WebComponentsReady', function() {
   templateBind.changeLang = function(e) {
