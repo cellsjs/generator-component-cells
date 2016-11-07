@@ -13,6 +13,11 @@ $ yo component-cells:seed your-component-name
 ```
 
 ## ChangeLog
+v2.1.0
+* Feat - Sets basic styles (display, font-family and box-sizing) to the :host (the element itself). It also sets the box-sizing property to border-box to all the element's children
+* Feat - Also force the hidden attribute to work, having :host([hidden])
+* Feat - Upgrade major version of devDependency
+
 v2.0.0
 * Feat - Upgrade major version of multi-language (cells-i18n-behavior)
 * Style - fix to pass linter
