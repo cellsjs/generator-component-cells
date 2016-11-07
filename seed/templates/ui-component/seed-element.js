@@ -1,15 +1,24 @@
 (function() {
 
-  'use strict';
+  class SeedElement extends Polymer.Element {
+    static get is() {
+      return `seed-element`;
+    }
 
-  Polymer({
+    static get config() {
+      return {
+        properties: {
+            //the properties you know and love from Polymer
+        },
+        observers: [
+          //the observers you know and love from Polymer
+        ]
+      }
+    }
 
-    is: 'seed-element'<% if (i18n) { %>,<% } %>
-<% if (i18n) { %>
-    behaviors: [
-      CellsBehaviors.i18nBehavior
-    ]
-<% } %>
-  });
-
+    constructor() {
+      super();
+    }
+  }
+  customElements.define(SeedElement.is, SeedElement);
 }());
