@@ -1,8 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="seed-element-styles.html">
-<% if (i18n) { %>
-<link rel="import" href="../cells-i18n-behavior/cells-i18n-behavior.html">
-<% } %>
+
 <!--
 `<seed-element>` description.
 
@@ -26,12 +24,7 @@ The following custom properties and mixins are available for styling:
 <dom-module id="seed-element">
   <template>
     <style include="seed-element-styles seed-element-shared-styles"></style>
-    <% if (i18n) { %>
-    <h1>{{t('seed-element-welcome')}} Cells</h1>
-    <% } else { %>
-    <h1>Welcome to Cells</h1>
-    <% } %>
-    <content></content>
+    <slot></slot>
   </template>
   <script src="seed-element.js"></script>
 </dom-module>
