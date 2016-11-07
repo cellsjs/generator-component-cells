@@ -66,13 +66,6 @@ module.exports = yeoman.generators.Base.extend({
         when: function (resp) {
           return resp.type === 'ui-component';
         },
-        name: 'i18n',
-        message: 'Is your component going to use i18n?',
-        type: 'confirm'
-      }, {
-        when: function (resp) {
-          return resp.type === 'ui-component';
-        },
         name: 'useTheme',
         message: 'Would you use a theme?',
         type: 'confirm'
@@ -171,6 +164,9 @@ module.exports = yeoman.generators.Base.extend({
     this.sourceRoot(path.join(path.dirname(this.resolved), 'templates/' + elementRoute));
 
     var renamedElement = function (file) {
+      var camelCased = elementName.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
+      camelCased.charAt(0).toUpperCase() + camelCased.slice(1);
+      file = file.replace(/SeedElement/g, camelCased);
       return file.replace(/seed-element/g, elementName);
     }.bind(this);
 
