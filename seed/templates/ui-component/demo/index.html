@@ -41,8 +41,16 @@
                 text-align: center;
                 min-height: 100%;
                 font-family: var(--cells-fontDefault);
-                color: var(--cells-neutral-color);
+                color: var(--cells-KM1_colour);
                 background-color: var(--cells-background-primary);
+              }
+              .bind-input {
+                margin: 0 1rem 1rem;
+                padding: 0 .5rem;
+                @apply(--cells-input--base);
+                @apply(--cells-input--decorator);
+                @apply(--cells-input--font);
+                @apply(--cells-input--m);
               }
               svg {
                 display: block;
