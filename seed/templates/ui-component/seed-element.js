@@ -5,15 +5,15 @@
       return `seed-element`;
     }
 
-    static get config() {
+    static get properties() {
       return {
-        properties: {
-            //the properties you know and love from Polymer
-        },
-        observers: [
-          //the observers you know and love from Polymer
-        ]
+        //the properties you know and love from Polymer
       }
+    }
+    static get observers() {
+      return [
+        //Polymer multiple observers
+      ]
     }
 
     constructor() {
